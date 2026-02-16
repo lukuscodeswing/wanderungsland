@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bildergalerie: Einwanderung in die USA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Zusätzliche Stile nur für die Galerie */
+        .gallery-container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 2px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .main-title {
+            text-align: center;
+        }
+
+        .gallery-slide {
+            display: none; /* Standardmäßig alle Slides ausblenden */
+        }
+
+        .gallery-slide.active {
+            display: block; /* Nur den aktiven Slide anzeigen */
+        }
+
+        .gallery-slide img {
+            width: 100%;
+            height: auto;
+            max-height: 60vh; /* Höhe des Bildes begrenzen */
+            object-fit: contain;
+            background-color: #eee; /* Hintergrund für transparente Bilder oder Letterboxing */
+        }
+
+        .gallery-text {
+            padding: 1.5rem;
+            text-align: left;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .gallery-navigation {
+            position: absolute;
+            top: 50%; /* vertikale Zentrierung */
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            pointer-events: none; /* Lässt Klicks "durch" die Navigation zum Bild */
+            padding: 0 1rem; /* Fügt links und rechts einen Abstand hinzu */
+        }
+
+
+        .nav-arrow {
+            pointer-events: all; /* Macht die Pfeile wieder klickbar */
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            border: none;
+            font-size: 2rem;
+            padding: 5rem 0.5rem 5rem 0.5rem;
+                cursor: pointer;
+            user-select: none;
+            transition: background 0.2s;
+        }
+
+        .nav-arrow:hover {
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        #prev-btn {
+            margin-left: -2rem; /* Schiebt den linken Pfeil nach links raus */
+        }
+
+        .gallery-counter {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="index.html" class="back-button">←</a>
+        <a href="ueberuns.html" class="menu-toggle">i</a>
+        </div> 
+        
+
+    <main class="content-wrapper">
+        <div class="gallery-container">
+            <h2 class="secondary-title">US-Einwanderung früher und heute</h2>
+            <h1 class="main-title" id="mainTitle">Wenn das Land der Freiheit Mauern baut</h1>
+            <h3 class="author-title" id="authorTitle" style="margin-bottom: 2rem;">von Lukas Wessling</h3>
+
+            
+            <div id="gallery">
+                <!-- Slides werden hier per JavaScript eingefügt -->
+            </div>
+
+            <div class="gallery-navigation">
+                <button id="prev-btn" class="nav-arrow">‹</button>
+                <button id="next-btn" class="nav-arrow">›</button>
+            </div>
+
+            <div id="gallery-counter" class="gallery-counter"></div>
+        </div>
+    </main>
+
+    <script>
+        const galleryData = [
+            { img: "pics/01.jpg", text: "Für rund zwölf Millionen Menschen war diese Insel das erste Stück US-amerikanischer Boden, das sie betraten: ..." },
+            { img: "pics/02.jpg", text: "... Ellis Island war von 1882 bis 1954 die Empfangshalle der Vereinigten Staaten. Die Vorfahren von rund 40 Prozent der heutigen US-Bürgerinnen und Bürger fanden auf diesem Weg nach Nordamerika." },
+            { img: "pics/03.jpg", text: "Hier untersuchten Ärzte die Eingewanderten, ein Heer von Schreibkräften nahm ihre Personalien auf, manche Neuankömmlinge mussten Schreib- und Lesetests bestehen." },
+            { img: "pics/03b.jpg", text: "Die meisten kostete all das nur wenige Stunden, ein Fünftel musste länger warten, rund zwei Prozent bestanden die Prüfung nicht." }, // 3b
+            { img: "pics/04.jpg", text: "Um das Jahr 1900 herum war mindestens jeder siebte Mensch in den USA im Ausland geboren. Rund drei Viertel dieser Einwanderer waren über New York eingereist, die meisten in Ellis Island angekommen." },
+            { img: "pics/05.jpg", text: "Die 1886 eingeweihte Freiheitsstatue wurde so zum Fixpunkt vieler Träume von einem besseren Leben. Wer sie sah, hatte es geschafft, ..." },
+            { img: "pics/06.jpg", text: "... hatte Wochen in engen, schlecht belüfteteten Holzverschlägen verbracht. Oft geplagt vom Seegang und immer wieder auch von Seuchen, die an Bord grassierten." },
+            { img: "pics/07.jpg", text: "Durch das Aufkommen der Dampfschifffahrt um die Jahrtausendwende entwickelte sich die Überfahrt von einem \"potenziell tödlichen\" Unterfangen zu einem, das meist \"nur noch unkomfortabel\" war, wie eine Chronistin schrieb." },
+            { img: "pics/08.jpg", text: "Die Reisezeit verkürzte sich von fünf bis acht Wochen auf rund zwölf Tage. Die Überfahrt wurde sicherer und erschwinglicher; dementsprechend sinnvoller erschien das Wagnis vielen." },
+            { img: "pics/09.jpg", text: "Die Zahl der Einreisen stieg in der Folge deutlich." },
+            { img: "pics/10.jpg", text: "Ab den 1920ern allerdings sank die Bereitschaft der USA, Neulinge aufzunehmen. Ellis Island wurde zur Abschiebeinsel." },
+            { img: "pics/11.jpg", text: "Wo jahrzehntelang US-amerikanische Familiengeschichten ihren Anfang genommen hatten, nahmen immer mehr ihr Ende oder fingen erst gar nicht an." },
+            { img: "pics/12.jpg", text: "Die Folge: 1970 war nicht einmal mehr ein Zwanzigstel der US-Bevölkerung im Ausland geboren." },
+            { img: "pics/13.jpg", text: "Ab den 1970er Jahren dann siedelten wieder mehr Menschen über. Wie schon vor 100 Jahren ist heute mehr als jede siebte Person, die in den USA lebt, nicht dort geboren." },
+            { img: "pics/14.jpg", text: "Wer heute in die USA einwandert, fährt allerdings nicht mehr an der Freiheitsstatue vorbei." },
+            { img: "pics/15.jpg", text: "Wer heute in die USA einwandert, landet auf einem Flughafen …" },
+            { img: "pics/16.jpg", text: "… oder kämpft sich durch die Wüste." },
+            { img: "pics/17.jpg", text: "Ab den 1990ern migrierten jedes Jahr rund zwei Millionen Menschen in die USA. Dabei halten sich legale und illegale Einreisen in etwa die Waage. Der öffentliche Fokus aber liegt klar auf letzteren …" },
+            { img: "pics/18.jpg", text: "… und damit auf der Grenze zu Mexiko." },
+            { img: "pics/19.jpg", text: "Auf den Menschen, die aus dem Süden in Richtung der Vereinigten Staaten aufbrechen." },
+            { img: "pics/20.jpg", text: "Tausende riskieren auf Zügen ihr Leben, ..." },
+            { img: "pics/21.jpg", text: "... ziehen gen Norden, ..." },
+            { img: "pics/22.jpg", text: "... kämpfen sich durch den Dschungel, ..." },
+            { img: "pics/23b.jpg", text: "... und überqueren den Rio Grande." },
+            { img: "pics/24.jpg", text: "Auf ihrem Weg werden sie immer wieder misshandelt von bewaffneten Gangs, ausgebeutet von korrupten Polizisten und benutzt von Schmugglern." },
+            { img: "pics/25.jpg", text: "Die Menschen in den USA schauen teils mitleidig, ..." },
+            { img: "pics/26.jpg", text: "... teils angst- oder gar hasserfüllt auf die Menschen, die da kommen." },
+            { img: "pics/27.jpg", text: "Die Menschen, die da kommen, wurden in den vergangenen Jahrzehnten zu einem der wichtigsten politischen Themen des Einwanderungslandes USA." },
+            { img: "pics/27b.jpg", text: "Es trieb viele US-Amerikanerinnen und US-Amerikaner an die Urnen ..." },
+            { img: "pics/27d.jpg", text: "... und andere auf die Straße." },        
+            { img: "pics/29.jpg", text: "Schon 1994 begann der Bau von Zäunen an der Grenze zu Mexiko. Unter dem damaligen Präsidenten Bill Clinton wurden US-Städte so von ihren mexikanischen Gegenübern getrennt." },
+            { img: "pics/30.jpg", text: "Unter George W. Bush und …" },
+            { img: "pics/31.jpg", text: "… Donald Trump wurde die Grenzanlage massiv ausgebaut." },
+            { img: "pics/32.jpg", text: "Die Grenze zwischen der USA und Mexiko ist 3145 Kilometer lang." },
+            { img: "pics/33.jpg", text: "Mittlerweile sind rund 1200 Kilometer davon befestigt. Mit Zäunen, Mauern und Pollern." },
+            { img: "pics/34.jpg", text: "Den Rest der Grenze haben Überwachungskameras, Sensoren, Patrouillen im Blick." },
+            { img: "pics/35.jpg", text: "Der Rio Grande tut sein Übriges." },
+            { img: "pics/36.jpg", text: "Der Versuch, ohne Visum in die USA einzureisen, kostet jedes Jahr Hunderte Menschen ihr Leben." },
+            { img: "pics/23.jpg", text: "Sie ertrinken im Rio Grande, verletzen sich beim Versuch, die Grenzanlagen zu überwinden ..." },
+            { img: "pics/38.jpg", text: "... oder erleiden Hitzeschläge in der Wüste. Tausende hält das nicht ab." },
+            { img: "pics/39.jpg", text: "Viele aber nutzen mittlerweile temporäre Visa, um legal einzureisen - und dann zu bleiben. Schätzungen zufolge machen Visumsüberschreitungen inzwischen 40 Prozent aller illegalen Einreisen aus." },
+            { img: "pics/40.jpg", text: "Wer diesen Weg wählt, muss sich nicht durch die Wüste oder den Rio Grande kämpfen." },
+            { img: "pics/41.jpg", text: "Den in den USA weit verbreiteten Vorurteilen sind allerdings alle gleichermaßen ausgesetzt." },
+            { img: "pics/42.jpg", text: "Da geht es ihnen wie jenen, die einst über Ellis Island einreisten, ..." },
+            { img: "pics/43.jpg", text: "... denn auch damals schon wurden die Neuen kritisch beäugt." },
+            { img: "pics/44a.jpg", text: "Die USA warfen den den Eingewanderten vor, Parallelgesellschaften zu bilden. Denn auch damals schon hielten sich Neuankömmlinge in der Fremde erstmal an ihre Landsleute, ..." },
+            { img: "pics/44b.jpg", text: "... zogen in Viertel, die man \"Little Germany\" oder \"Little Italy\" nannte." },
+            { img: "pics/45.jpg", text: "Die Deutschen galten als besonders unangepasst. Ihre Trinkfreudigkeit passte nicht zu den puritanischen Moralvorstellungen der Gesellschaft, in die sie eingewandert waren." },
+            { img: "pics/45b.jpg", text: "Die Eingewanderten wurden als faul wahrgenommen; als arbeitsunwillig, als Last für das Gemeinwesen." },
+            { img: "pics/47.jpg", text: "Gleichzeitig wurde kritisiert, sie nähmen US-Amerikanern deren Arbeitsplätze weg." },
+            { img: "pics/48.jpg", text: "Dabei zieht sich durch die US-amerikanische Geschichte, dass die Neuen oft Jobs erledigen, die bei Eingebürgerten weniger beliebt sind." },
+            { img: "pics/49.jpg", text: "Damals arbeiteten sie in Schlachthöfen, als Dienstmädchen oder auf Baustellen." },
+            { img: "pics/50a.jpg", text: "Sie legten Eisenbahnschienen quer durchs Land, ... "},
+            { img: "pics/50d.jpg", text: "... sprengten Tunnel durch die Gebirge, ..."},
+            { img: "pics/50c.jpg", text: "... erschlossen den Vereinigten Staaten neues Land, neuen Reichtum und bezahlten dafür immer wieder mit dem eigenen Leben." },
+            { img: "pics/51.jpg", text: "Heute fahren sie anderer Leute essen aus, pflegen alte oder kranke Menschen, ..." },
+            { img: "pics/52.jpg", text: "... sie ernten Gemüse, befüllen Supermarktregale, ..." },
+            { img: "pics/53.jpg", text: "... sie putzen Büros. Und mit der Zeit werden sehr wahrscheinlich immer mehr von ihnen in den Büros sitzen. Neben den Nachfahren der Immigranten von damals." }
+        ];
+
+        const galleryElement = document.getElementById('gallery');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const counterElement = document.getElementById('gallery-counter');
+        let currentSlide = 0;
+
+        // Galerie initialisieren
+        function initializeGallery() {
+            galleryData.forEach((item, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'gallery-slide';
+                slide.innerHTML = `
+                    <img src="${item.img}" alt="Bild zur Einwanderungsgeschichte ${index + 1}">
+                    <p class="gallery-text">${item.text}</p>
+                `;
+                galleryElement.appendChild(slide);
+            });
+            showSlide(currentSlide);
+        }
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.gallery-slide');
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+            counterElement.textContent = `${index + 1} / ${galleryData.length}`;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide > 0) ? currentSlide - 1 : galleryData.length - 1;
+            showSlide(currentSlide);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide < galleryData.length - 1) ? currentSlide + 1 : 0;
+            showSlide(currentSlide);
+        });
+
+        initializeGallery();
+    </script>
+    <footer>
+        <p> <a href="https://www.n-tv.de/ntvintern/Impressum-id6405904.html">© ntv.de Alle Rechte vorbehalten</a></p>
+        <p> <a href="ueberuns.html">Ein Projekt der ntv-Volontäre Lia Nowak und Lukas Wessling</a></p>
+        <p><a href="https://www.n-tv.de/mediathek/bilderserien/politik/Wenn-das-Land-der-Freiheit-Mauern-baut-article25979219.html">Diese Bilderserie erschien am 20.09.2025 auf n-tv.de</a></p>
+        <p> Fotos von picture alliance, dpa, AP Photo, Reuters, Image, CPA Media, UIG </p>
+        <p> Glasshouse Images, Heritage Images, SZ Photo, zumapress.com, Photoshot, Sips USA </p>
+        <p> Thomson Reuters Foundation, Fabio, San Diego Union Tribune, imagebroker, akg-images und United Archives.</p>
+        <p>Kontakt: <a href="mailto:leah.nowak@ntv.de">leah.nowak@ntv.de</a> und <a href="mailto:lukas.wessling@ntv.de">lukas.wessling@ntv.de</a></p>
+        <p> <a href="#top">Nach oben</a></p>
+        <p> <a href="index.html">Website</a> erstellt von Lukas Wessling</p>
+    </footer>
+</body>
+</html>

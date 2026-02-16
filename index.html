@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ein Wanderungsland</title>
+    <id="top"></id>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="video-background">
+        <!-- Video für Desktop (Querformat) -->
+        <video class="bg-video bg-video-desktop" autoplay muted loop playsinline poster="background-fallback.jpg">
+            <source src="background.mp4" type="video/mp4">
+        </video>
+        <!-- Video für Mobile (Hochformat) -->
+        <video class="bg-video bg-video-mobile" autoplay muted loop playsinline poster="background-fallback.jpg">
+            <source src="background-mobile.mp4" type="video/mp4">
+        </video>
+    </div>
+
+        <!-- Header mit Menü (ggfalls wieder anschalten; aktuell deaktiviert) --
+        <div class="header">
+            <button class="menu-toggle" onclick="toggleMenu()">☰ </button>
+            <div class="menu" id="menu">
+                <a href="ueber-uns.html">Über Uns</a>
+                <a href="impressum.html">Impressum</a>
+            </div>
+        </div>
+    -->
+
+    <main class="content-wrapper">
+    <!-- Titel-Box -->
+    <div class="content-box header" onclick="window.location.href='ueberuns.html'">
+        <h1 class="main-title" id="mainTitle">Ein Wanderungsland</h1>
+        <h3 class="author-title" id="authorTitle">von Lia Nowak und Lukas Wessling</h3>
+    </div>
+
+        <!-- Content Boxen -->
+        <div class="content-box" onclick="window.location.href='gonzo01.html'">
+            <div class="box-content">
+                <h2 class="box-title">"Meine Leute haben Angst, zur Arbeit zu kommen"</h2>
+                <p class="box-text">Etwa 75 Prozent der Landarbeiter in Kalifornien haben keinen legalen Aufenthaltsstatus. Seit die Migrationsbehörde ICE immer mehr Einwanderer festnimmt, trauen sich viele nicht mehr zur Arbeit. Den USA könnten die billigen Arbeitskräfte ausgehen. Das hat nun auch US-Präsident Trump bemerkt.</p>
+            </div>
+        </div>
+
+        <div class="content-box" onclick="window.location.href='gonzo02.html'">
+            <div class="box-content">
+                <h2 class="box-title">Zustände in US-Abschiebelager sind "kaum auszuhalten"</h2>
+                <p class="box-text">3000 Migranten ohne Papiere soll die Einwanderungsbehörde ICE in den USA jeden Tag festnehmen. Das Vorgehen der Beamten ist aggressiv, die Zustände in den Abschiebeunterkünften katastrophal. Vor dem Metropolitan Detention Center in Los Angeles erzählen Betroffene von ihrem Leid.</p>
+            </div>
+        </div>
+
+        <div class="content-box" onclick="window.location.href='lokus01.html'">
+            <div class="box-content">
+                <h2 class="box-title">Eine Hand nimmt von Migranten, die andere schiebt sie ab</h2>
+                <p class="box-text">Millionen illegal Eingewanderte füllen die Supermarktregale der USA oder putzen ihre Toiletten. Sie sind wichtig für die Wirtschaft des Landes, für dessen Wohlstand. Sie sind ebenso wichtig für den Präsidenten, der Massenabschiebungen versprach, koste es, was es wolle. Ein Dilemma.</p>
+            </div>
+        </div>
+
+        <div class="content-box" onclick="window.location.href='lokus03.html'">
+            <div class="box-content">
+                <h2 class="box-title">Trumps Migrations-Rhetorik ist ein Jahrhundert-Rückfall</h2>
+                <p class="box-text">US-Präsident Trump ist eine Art Zeitreisender. Zumindest, wenn er über Einwanderer redet. Eine Studie zeigt anschaulich: Schon in seiner ersten Amtszeit klang Trump so, wie fast ein Jahrhundert lang kein Präsident mehr geklungen hatte.</p>
+            </div>
+        </div>
+
+        <div class="content-box" onclick="window.location.href='lokus02.html'">
+            <div class="box-content">
+                <h2 class="box-title">Trumps Abschiebungen zersetzen Fundament der US-Wirtschaft</h2>
+                <p class="box-text">US-Präsident Trump hat Massenabschiebungen versprochen, und er scheint fest entschlossen, sie zu liefern. Das könnte allerdings ein anderes Wahlkampfversprechen unmöglich machen.</p>
+            </div>
+        </div>
+
+        <div class="content-box" onclick="window.location.href='gallery.html'">
+            <div class="box-content">
+                <h2 class="box-title">Wenn das Land der Freiheit Mauern baut</h2>
+                <p class="box-text">Die Dampfschifffahrt über den Atlantik und der Weg durch die mexikanische Wüste haben eine Gemeinsamkeit: Beide führten seit ihrer Gründung Millionen Migranten in die USA. Viele von ihnen träumten von einem besseren Leben, viele zahlten einen hohen Preis.</p>
+            </div>
+        </div>        
+     
+        <div class="content-box" onclick="window.location.href='gonzo03.html'">
+            <div class="box-content">
+                <h2 class="box-title">In Los Angeles tobt eine Entscheidungsschlacht</h2>
+                <p class="box-text">Vergangene Woche nimmt die US-Einwanderungsbehörde bei Razzien in Los Angeles mehrere Einwanderer fest. Seitdem toben Proteste, nicht zuletzt, weil die Stadt zu den sogenannten "Sanctuary Cities" gehört. Was sich hinter dem Begriff verbirgt - ein Überblick.</p>
+            </div>
+        </div>
+
+        <div class="content-box" onclick="window.location.href='gonzo04.html'">
+            <div class="box-content">
+                <h2 class="box-title">Trump karrt US-Einwanderer quer durchs Land</h2>
+                <p class="box-text">Aus den Augen, aus dem Sinn: In den USA verlegt die Einwanderungsbehörde ICE Migranten von einer Haftanstalt in die nächste. In den oft entlegenen Gefängnissen bleiben sie häufig ohne rechtlichen Beistand oder Kontakt zu Familie und Freunden. Die Transporte haben System und sind vor allem eines: teuer.</p>
+            </div>
+        </div>
+    </main>
+
+<!--Menüskript (gerade deaktiviert)    
+<script>
+        // Menü ein-/ausklappen
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('active');
+        }
+
+        // Menü schließen wenn außerhalb geklickt wird
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('menu');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+                menu.classList.remove('active');
+            }
+        });
+
+    </script>
+-->
+    <footer>
+        <p> <a href="https://www.n-tv.de/ntvintern/Impressum-id6405904.html">© ntv.de Alle Rechte vorbehalten</a></p>
+        <p> <a href="ueberuns.html">Ein Projekt der ntv-Volontäre Lia Nowak und Lukas Wessling</a></p>
+        <p>Kontakt: <a href="mailto:leah.nowak@ntv.de">leah.nowak@ntv.de</a> und <a href="mailto:lukas.wessling@ntv.de">lukas.wessling@ntv.de</a></p>
+        <p> <a href="#top">Nach oben</a></p>
+        <p> Website erstellt von Lukas Wessling</p>
+    </footer>
+</body>
+</html>

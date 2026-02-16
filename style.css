@@ -1,0 +1,455 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --primary-color: #00AEF3;
+    --secondary-color: #777777;
+    --accent-color: #E81B23;
+    --background-color: #F6F6F6;
+    --text-color: #333;
+    --box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    --max-width: 1200px;
+    --lesser-width: 800px;
+    --card-bg: rgba(255, 255, 255, 0.7); /* Weiß, 70% Deckkraft */
+    --border-radius: 1px
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+
+    /* erzwinge sinnvolle umbrüche */
+    p, li, blockquote {
+    overflow-wrap: anywhere;  /* bricht auch sehr lange wörter/urls */
+    word-break: normal;       /* deutschfreundlich */
+    hyphens: auto;            /* bindestriche zulassen */
+  }
+}
+
+
+/* übergeordnete Schachteln */
+.content-wrapper {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 24px 16px;
+}
+
+
+.container {
+    max-width: var(--lesser-width);
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header mit Menü */
+.header {
+    position: sticky;
+    margin-bottom: 40px;
+}
+
+.menu-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--text-color);
+    color: var(--background-color);
+    border: none;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    text-decoration: none; /* Entfernt die Unterstreichung vom Link */
+    /* NEU: Feste Größe und Zentrierung für quadratische Form */
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Zurück-Button, angelehnt an Menu-Button*/
+.back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px; /* Position auf links geändert */
+    background: var(--text-color);
+    color: var(--background-color);
+    border: none;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    text-decoration: none; /* Für <a>-Tag, um Unterstreichung zu entfernen */
+    /* NEU: Feste Größe und Zentrierung für quadratische Form */
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2px; /* Kleine Korrektur, um den Pfeil optisch zu zentrieren */
+}
+
+.menu-toggle:hover {
+    background: var(--accent-color);
+}
+.back-button:hover {
+    background: var(--accent-color);
+}
+
+.menu {
+    position: absolute;
+    top: 30px;
+    right: 10px;
+    background: var(--background-color);
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 10px var(--box-shadow);
+    display: none;
+    min-width: 150px;
+}
+
+.menu.active {
+    display: block;
+}
+
+.menu a {
+    display: block;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: var(--text-color); 
+    border-bottom: 1px solid #eee;
+}
+
+.menu a:last-child {
+    border-bottom: none;
+}
+.menu a:hover {
+    background-color: var(--background-color);
+}
+
+
+/* Content Boxen */
+.content-box {
+    text-align: center;
+    background: var(--card-bg);
+    border-radius: var(--border-radius)/2;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    max-width: var(--lesser-width);
+    margin-bottom: 60px; /* Erhöht für mehr Abstand zwischen den Boxen */
+    padding: 20px;
+    margin-left: auto;  /* Zentrierung */
+    margin-right: auto; /* Zentrierung */
+}
+
+.content-box a {
+color: var(--secondary-color);          /* Links grau */
+text-decoration: none;   /* Unterstreichung weg */
+}
+.content-box a:hover {
+text-decoration: underline; /* Unterstrich beim Drüberfahren */
+}
+
+/* Versuch ganzer Text in eine Box */
+.article-body-content {
+    margin-top: 5rem;
+    padding: 3rem;
+    text-align: left; /* Text linksbündig für den Hauptartikel */
+    background: var(--background-color); 
+}
+    /* Eigene Klasse für Zwischenüberschriften, um sie direkt zu integrieren */
+.subheading {
+    font-weight: bold;
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 2em;
+    margin-bottom: 1.5em;
+}
+    /* Eigene Klasse für den Teaser-Text, damit er auch innerhalb der großen Box funktioniert */
+.teaser-text {
+    font-style: italic;
+    color: var(--secondary-color);
+    font-size: 1rem;
+    margin-bottom: 2em;
+    display: block; /* Stellt sicher, dass es als eigener Absatz behandelt wird */
+}
+
+.content-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+/* Modifikator für eine unauffälligere Content-Box */
+.content-box.subtle {
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    text-align: left; /* Text linksbündig statt zentriert */
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-bottom: 20px;
+}
+
+.content-box.subtle:hover {
+    transform: none; /* Kein Hover-Effekt */
+    box-shadow: none;
+}
+
+/* Modifikator für Header-Box mit Abstand nach unten */
+.content-box.header {
+    margin-bottom: 10em;
+    max-width: (var(--lesser-width)/2);  
+
+}
+/* Modifikator für Header-Box mit kleinem Abstand nach unten */
+.content-box.smallheader {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    background: var(--background-color);
+}
+
+
+.box-content {
+    padding: 20px;
+}
+
+.box-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 15px;
+}
+
+.box-text {
+    color: var(--text-color);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.content-box.italic-teaser .box-text {
+    font-style: italic;
+    color: var(--text-color);
+    font-size: 1rem;
+    margin-bottom: 2em;
+}
+
+
+
+.content-box.title .box-text {
+    font-weight: bold;
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+
+/* Titel-Styling innerhalb der Box */
+.main-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+.secondary-title {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin: 0 0 0.5em 0; /* kleiner Abstand nach unten */
+    padding: 0;
+}
+
+.author-title {
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin: 1em 0 1em 0; /* kleiner Abstand nach oben, großer Abstand nach unten */
+    padding: 0;
+}
+.box-text a:hover {
+    text-decoration: underline}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2rem;
+        margin: 20px 0;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+    .box-content {
+        padding: 15px;
+    }
+    .box-title {
+        font-size: 1rem;
+    }
+    .box-text {
+        font-size: 0.7rem;
+    }
+    .footer {
+        font-size: 0.4rem;
+        padding: 10px;
+    }
+}
+
+
+/* Footer-Styling */
+footer {
+background-color: var(--text-color);   /* dunkler Hintergrund */
+color: var(--background-color);      /* heller Text */
+padding: 30px 16px;              /* Innenabstand oben/unten und seitlich */
+text-align: center;              /* Text mittig */
+margin-top: 35em;                /* Abstand zum Inhalt darüber */
+font-size: 0.7rem;
+}
+
+footer a {
+color: var(--background-color);          /* Links weiß */
+text-decoration: none;   /* Unterstreichung weg */
+}
+
+footer a:hover {
+text-decoration: underline; /* Unterstrich beim Drüberfahren */
+}
+
+/* Container für die Videos, um sie im Hintergrund zu halten */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Stellt sicher, dass der Inhalt darüber liegt */
+    overflow: hidden;
+}
+
+/* Gemeinsame Stile für beide Videos */
+.bg-video {
+    position: absolute; /* Positioniert das Video innerhalb des Containers */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Füllt den Bildschirm ohne das Seitenverhältnis zu verzerren */
+}
+
+/* Standardmäßig das mobile Video ausblenden */
+.bg-video-mobile {
+    display: none;
+}
+
+/* Media Query für Bildschirme, die breiter als 768px sind (Tablets/Desktops) */
+@media (min-width: 769px) {
+    .bg-video-desktop {
+        display: block; /* Desktop-Video anzeigen */
+    }
+    .bg-video-mobile {
+        display: none; /* Mobiles Video ausblenden */
+    }
+}
+
+/* Media Query für Bildschirme, die schmaler als 768px sind (Smartphones) */
+@media (max-width: 768px) {
+    .bg-video-desktop {
+        display: none; /* Desktop-Video ausblenden */
+    }
+    .bg-video-mobile {
+        display: block; /* Mobiles Video anzeigen */
+    }
+}
+
+/* beim Hovern über Link erscheint eine Hand */
+a, button, [onclick] {
+    cursor: pointer;
+}
+
+/* --- Stile für Scrollytelling --- */
+#scrolly-presidents {
+    position: relative;
+}
+
+.scrolly-vis {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0; /* Klebt ganz oben am Bildschirmrand */
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Füllt den gesamten Bildschirm aus */
+    display: flex;
+    flex-direction: column; /* Kinder sollen untereinander angeordnet werden */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container für die responsive SVG */
+.chart-container {
+    width: 100%;
+    max-width: var(--lesser-width); /* Legt eine maximale Größe fest, damit es auf sehr großen Bildschirmen nicht riesig wird */
+    margin: 0 auto; /* Zentriert den Container */
+}
+
+/* Gemeinsame Stile für Header und Intro der Grafik */
+.chart-header, .chart-intro {
+    width: 100%;
+    max-width: var(--lesser-width); /* Dieselbe maximale Breite wie die Grafik */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left; 
+}
+
+.scrolly-text {
+    position: relative;
+    z-index: 1; /* Wichtig: Stellt sicher, dass der Text VOR der Grafik liegt */
+    /* Wir machen den Text-Container zu einem Flex-Container, der seine Kinder zentriert */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: var(--lesser-width)*0.95;
+    margin-bottom: 100vh; /* Nur noch Abstand nach unten */
+    padding: 3rem;
+    background-color: var(--background-color); /* Solide Hintergrundfarbe, passend zum Rest der Seite */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+
+/* Anpassungen für kleinere Bildschirme */
+@media (max-width: 768px) {
+    #scrolly-presidents {
+        display: block; /* Untereinander statt nebeneinander */
+    }
+
+    .scrolly-vis {
+        position: relative; /* Sticky funktioniert hier nicht gut */
+        top: auto;
+        height: 50vh; /* Kleinere Höhe */
+        width: 90%;
+        margin: 0 auto 2rem auto;
+    }
+
+    .scrolly-text {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .step {
+        margin-bottom: 50vh; /* Weniger Abstand auf Mobilgeräten */
+    }
+}
