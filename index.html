@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ein Wanderungsland</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <id="top"></id>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,13 +12,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="video-background">
+    <!-- Fallback-Bild hier als background-image setzen, damit es sichtbar ist, während das Video lädt -->
+    <div class="video-background" style="background-image: url('background-fallback.jpg');">
         <!-- Video für Desktop (Querformat) -->
-        <video class="bg-video bg-video-desktop" autoplay muted loop playsinline poster="background-fallback.jpg">
+        <video class="bg-video bg-video-desktop" muted loop playsinline preload="auto">
             <source src="background.mp4" type="video/mp4">
         </video>
         <!-- Video für Mobile (Hochformat) -->
-        <video class="bg-video bg-video-mobile" autoplay muted loop playsinline poster="background-fallback.jpg">
+        <video class="bg-video bg-video-mobile" muted loop playsinline preload="auto">
             <source src="background-mobile.mp4" type="video/mp4">
         </video>
     </div>
@@ -108,5 +110,8 @@
         <p> <a href="#top">Nach oben</a></p>
         <p> Website erstellt von Lukas Wessling</p>
     </footer>
+
+    <!-- Skript für ruckelfreies Video-Laden -->
+    <script src="video-loader.js"></script>
 </body>
 </html>
