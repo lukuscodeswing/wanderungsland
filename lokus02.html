@@ -13,15 +13,17 @@
     <!-- Videologik (funktioniert über videoloader.js) -->
     <script src="videoloader.js"></script>
 
-    <!-- Fallbackbild (=erster Videoframe) solange Video noch lädt -->
-    <div class="video-background" style="background-image: url('background_lokus02_fallback.jpg');">
-        <!-- Video für Desktop (Querformat) -->
-        <video class="bg-video bg-video-desktop" muted loop playsinline preload="auto">
-            <source src="backgroundvid_lokus02_desktop.mp4" type="video/mp4">
-        </video>
-        <!-- Video für Mobile (Hochformat) -->
-        <video class="bg-video bg-video-mobile" muted loop playsinline preload="auto">
-            <source src="backgroundvid_lokus02_mobile.mp4" type="video/mp4">
+    <!-- Videologik & Fallback -->
+    <div class="video-background" 
+         data-video-desktop="background_lokus02_desktop.mp4"
+         data-video-mobile="background_lokus02_mobile.mp4"
+         data-fallback-desktop="fallback_lokus02_desktop.jpg"
+         data-fallback-mobile="fallback_lokus02_mobile.jpg">
+        <!-- Fallback-Bild, wird von JS befüllt -->
+        <img id="fallback-image" src="" alt="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+        <!-- Video-Element, wird von JS befüllt -->
+        <video id="bg-video" class="bg-video" muted loop playsinline preload="auto">
+            <source id="video-source" src="" type="video/mp4">
         </video>
     </div>
 
