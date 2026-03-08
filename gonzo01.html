@@ -10,22 +10,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Fallback-Bild hier als background-image setzen, damit es sichtbar ist, während das Video lädt -->
+    <!-- Videologik (funktioniert über videoloader.js) -->
+    <script src="videoloader.js"></script>
+
+    <!-- Fallbackbild (=erster Videoframe) solange Video noch lädt -->
     <div class="video-background" style="background-image: url('background_gonzo01_fallback.jpg');">
         <!-- Video für Desktop (Querformat) -->
         <video class="bg-video bg-video-desktop" muted loop playsinline preload="auto">
-            <source src="trial_backgroundvid_gonzo01_desktop.mp4" type="video/mp4">
+            <source src="backgroundvid_gonzo01_desktop.mp4" type="video/mp4">
         </video>
         <!-- Video für Mobile (Hochformat) -->
         <video class="bg-video bg-video-mobile" muted loop playsinline preload="auto">
             <source src="backgroundvid_gonzo01_mobile.mp4" type="video/mp4">
         </video>
-    
+    </div>
 
     <div class="header">
         <a href="index.html" class="back-button">←</a>
         <a href="ueberuns.html" class="menu-toggle">i</a>
-        </div>
     </div>
     <main class="content-wrapper">
     <!-- Titel-Box -->
@@ -72,8 +74,5 @@
         <p> <a href="index.html">Website</a> erstellt von Lukas Wessling</p>
     </footer>
        
-    <!-- Skript für ruckelfreies Video-Laden -->
-    <script src="videoloader.js"></script>
-
 </body>
 </html>

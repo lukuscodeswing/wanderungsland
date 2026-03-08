@@ -11,10 +11,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Videologik (funktioniert über videoloader.js) -->
+    <script src="videoloader.js"></script>
 
-    <!-- Hintergrundbild anstelle des Videos -->
-    <div class="video-background" style="background-image: url('congress_pic.jpg'); background-size: cover; background-position: center;">
-    </div>    
+    <!-- Fallbackbild (=erster Videoframe) solange Video noch lädt -->
+    <div class="video-background" style="background-image: url('background_lokus03_fallback.jpg');">
+        <!-- Video für Desktop (Querformat) -->
+        <video class="bg-video bg-video-desktop" muted loop playsinline preload="auto">
+            <source src="backgroundvid_lokus03_desktop.mp4" type="video/mp4">
+        </video>
+        <!-- Video für Mobile (Hochformat) -->
+        <video class="bg-video bg-video-mobile" muted loop playsinline preload="auto">
+            <source src="backgroundvid_lokus03_mobile.mp4" type="video/mp4">
+        </video>
+    </div>
     
     <div class="header">
         <a href="index.html" class="back-button">←</a>

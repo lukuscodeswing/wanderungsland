@@ -10,18 +10,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!--Hintergrundvideo (im Zweifel wieder Block entfernen)-->
-    <div class="video-background">
+    <!-- Videologik (funktioniert über videoloader.js) -->
+    <script src="videoloader.js"></script>
+
+    <!-- Fallbackbild (=erster Videoframe) solange Video noch lädt -->
+    <div class="video-background" style="background-image: url('background_gonzo03_fallback.jpg');">
         <!-- Video für Desktop (Querformat) -->
-        <video class="bg-video bg-video-desktop" autoplay muted loop playsinline poster="background_gonzo03_fallback.jpg">
+        <video class="bg-video bg-video-desktop" muted loop playsinline preload="auto">
             <source src="backgroundvid_gonzo03_desktop.mp4" type="video/mp4">
         </video>
         <!-- Video für Mobile (Hochformat) -->
-        <video class="bg-video bg-video-mobile" autoplay muted loop playsinline poster="background_gonzo03_fallback.jpg">
+        <video class="bg-video bg-video-mobile" muted loop playsinline preload="auto">
             <source src="backgroundvid_gonzo03_mobile.mp4" type="video/mp4">
         </video>
     </div>
-<!-- Für Hintergrundvideo hier Videoblock aus index.html einfügen (evtl auf anderes Video verweisen) -->
 
     <div class="header">
         <a href="index.html" class="back-button">←</a>

@@ -12,15 +12,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Fallback-Bild hier als background-image setzen, damit es sichtbar ist, während das Video lädt -->
-    <div class="video-background" style="background-image: url('background-fallback.jpg');">
+ <!-- Videologik (funktioniert über videoloader.js) -->
+    <script src="videoloader.js"></script>
+
+    <!-- Fallbackbild (=erster Videoframe) solange Video noch lädt -->
+        <div class="video-background" style="background-image: url('fallback_desktop.jpg');">
         <!-- Video für Desktop (Querformat) -->
         <video class="bg-video bg-video-desktop" muted loop playsinline preload="auto">
-            <source src="background.mp4" type="video/mp4">
+            <source src="background_desktop.mp4" type="video/mp4">
         </video>
         <!-- Video für Mobile (Hochformat) -->
         <video class="bg-video bg-video-mobile" muted loop playsinline preload="auto">
-            <source src="background-mobile.mp4" type="video/mp4">
+            <source src="background_mobile.mp4" type="video/mp4">
         </video>
     </div>
 
@@ -111,7 +114,5 @@
         <p> Website erstellt von Lukas Wessling</p>
     </footer>
 
-    <!-- Skript für ruckelfreies Video-Laden -->
-    <script src="videoloader.js"></script>
 </body>
 </html>
