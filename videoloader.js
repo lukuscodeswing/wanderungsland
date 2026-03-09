@@ -15,6 +15,7 @@
         const videoSource = document.getElementById('video-source');
         const fallbackImage = document.getElementById('fallback-image');
         const videoContainer = document.querySelector('.video-background');
+        const toggleButton = document.getElementById('video-toggle');
 
         // Prüfen, ob die neuen Elemente existieren. Wenn nicht, bricht das Skript ab.
         if (!video || !videoSource || !fallbackImage || !videoContainer) {
@@ -51,9 +52,11 @@
             video.play().then(() => {
                 console.log("LOG: video.play() war erfolgreich. Video startet jetzt.");
                 video.classList.add('is-playing'); // Fade-In via CSS
+                if(toggleButton) toggleButton.textContent = '❚❚'; // Pause-Symbol setzen
             }).catch(error => {
                 console.warn("LOG: Autoplay wurde verhindert oder Video konnte nicht gestartet werden:", error);
                 // Das Fallback-Bild ist bereits sichtbar, also ist hier keine weitere Aktion nötig.
+                if(toggleButton) toggleButton.textContent = '▶'; // Play-Symbol setzen
             });
         };
 
@@ -70,6 +73,24 @@
 
             // Ladevorgang explizit anstoßen, nachdem die Quelle gesetzt wurde
             video.load();
+        }
+
+        // --- Button Logik ---
+        if (toggleButton) {
+            toggleButton.addEventListener('click', function() {
+                if (!video.paused) {
+                    // Video läuft -> Stoppen und Fallback zeigen
+                    video.pause();
+                    video.classList.remove('is-playing'); // Fade-Out (Fallback wird sichtbar)
+                    toggleButton.textContent = '▶';
+                } else {
+                    // Video pausiert -> Von vorne starten
+                    video.currentTime = 0;
+                    video.play();
+                    video.classList.add('is-playing'); // Fade-In
+                    toggleButton.textContent = '❚❚';
+                }
+            });
         }
     });
 })();

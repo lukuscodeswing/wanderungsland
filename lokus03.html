@@ -2,8 +2,8 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trumps Migrations-Rhetorik ist ein Jahrhundert-Rückfall</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,8 +18,8 @@
     <div class="video-background" 
          data-video-desktop="background_lokus03_desktop.mp4"
          data-video-mobile="background_lokus03_mobile.mp4"
-         data-fallback-desktop="fallback_lokus03_desktop.jpg"
-         data-fallback-mobile="fallback_lokus03_mobile.jpg">
+         data-fallback-desktop="congress_pic.jpg"
+         data-fallback-mobile="congress_pic.jpg">
         <!-- Fallback-Bild, wird von JS befüllt -->
         <img id="fallback-image" src="" alt="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
         <!-- Video-Element, wird von JS befüllt -->
@@ -28,7 +28,10 @@
         </video>
     </div>
     
-    <div class="header">
+    <!-- Play/Pause Button -->
+    <button id="video-toggle" class="video-toggle">❚❚</button>
+
+    <div class="header header-with-buttons">
         <a href="index.html" class="back-button">←</a>
         <a href="ueberuns.html" class="menu-toggle">i</a>
         </div> 
