@@ -13,6 +13,7 @@
     --max-width: 1200px;
     --lesser-width: 800px;
     --card-bg: rgba(255, 255, 255, 0.7); /* Weiß, 70% Deckkraft */
+    --smallheader-bg: rgba(777, 777, 777, 0.1);
     --border-radius: 1px
 }
 
@@ -246,11 +247,25 @@ text-decoration: underline; /* Unterstrich beim Drüberfahren */
     margin-bottom: 10em;
 
 }
-/* Modifikator für Header-Box mit kleinem Abstand nach unten */
+/* Titelbox für Artikel */
 .content-box.smallheader {
     margin-top: 2em;
     margin-bottom: 2em;
     background: var(--background-color);
+}
+/* Titelbox für Artikel mit transparentem Look */
+.content-box.transparent_smallheader {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    background: var(--smallheader-bg);
+}
+.transparent_main-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--background-color);
+    margin: 0;
+    padding: 0;
 }
 .box-title {
     font-size: 1.5rem;
@@ -283,6 +298,15 @@ text-decoration: underline; /* Unterstrich beim Drüberfahren */
 
 
 /* Titel-Styling innerhalb der Box */
+.homepage-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
 .main-title {
     text-align: center;
     font-size: 2rem;
@@ -331,7 +355,7 @@ text-decoration: underline; /* Unterstrich beim Drüberfahren */
         font-size: 1rem;
     }
     .box-text {
-        font-size: 0.7rem;
+        font-size: 0.9rem;
     }
     .footer {
         font-size: 0.4rem;
