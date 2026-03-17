@@ -6,6 +6,8 @@
     const container = d3.select('#scrolly-population .scrolly-vis');
     const scrollyText = d3.select('#scrolly-population .scrolly-text');
     const steps = scrollyText.selectAll('.step');
+    const isMobile = window.innerWidth < 768;
+
 
     // Aufführung: DOM gibt später Signal, wenn Bühne für B-Szene ready ist und stupst Regisseur (scrollama) an
     // Wartet, bis das gesamte HTML-Dokument geladen ist, bevor die Grafik initialisiert wird.
@@ -255,7 +257,7 @@
             // Aufführung SCHRITT 4: Stück beginnt
             scroller.setup({
                 step: '#scrolly-population .scrolly-text .step', // WICHTIG: Spezifischer Selektor
-                offset: 0.7,
+                offset: isMobile ? 1.0 : 0.7, // Mobil: Trigger ganz unten (1.0), Desktop: 0.7
                 debug: false
             })
             .onStepEnter(handleStepEnter);

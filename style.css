@@ -6,6 +6,7 @@
 :root {
     --primary-color: #00AEF3;
     --secondary-color: #777777;
+    --light-gray: #dddddd;
     --accent-color: #E81B23;
     --background-color: #F6F6F6;
     --text-color: #333;
@@ -265,7 +266,22 @@ text-decoration: underline; /* Unterstrich beim Drüberfahren */
     font-weight: bold;
     color: var(--background-color);
     margin: 0;
+    padding: 10px 0;
+}
+.transparent_author-title {
+    text-align: center;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--light-gray);
+    margin: 0;
     padding: 0;
+}
+.transparent_secondary-title {
+    text-align: center;
+    font-size: 1.3rem;
+    color: var(--light-gray);
+    margin: 0;
+    padding: 10px 0;
 }
 .box-title {
     font-size: 1.5rem;
@@ -507,8 +523,10 @@ a, button, [onclick] {
     }
 
     .scrolly-vis {
-        position: relative; /* Sticky funktioniert hier nicht gut */
-        top: auto;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        width: 100%;
         height: 50vh; /* Kleinere Höhe */
         width: 90%;
         margin: 0 auto 2rem auto;

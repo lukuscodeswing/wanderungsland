@@ -5,6 +5,7 @@
     const container = d3.select('#scrolly-congress .scrolly-vis');
     const scrollyText = d3.select('#scrolly-congress .scrolly-text');
     const steps = scrollyText.selectAll('.step');
+    const isMobile = window.innerWidth < 768;
     
     // Wartet, bis das gesamte HTML-Dokument geladen ist, bevor die Grafik initialisiert wird.
     document.addEventListener('DOMContentLoaded', function() {
@@ -274,7 +275,7 @@
             // Aufführung SCHRITT 4: Stück beginnt
             scroller.setup({
                 step: '#scrolly-congress .scrolly-text .step', // WICHTIG: Spezifischer Selektor
-                offset: 0.7,
+                offset: isMobile ? 0.9 : 0.7, // Mobil: Trigger weit unten (0.9), Desktop: 0.7
                 debug: false
             })
             .onStepEnter(handleStepEnter);

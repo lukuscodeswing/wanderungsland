@@ -5,6 +5,7 @@
     const container = d3.select('#scrolly-presidents .scrolly-vis');
     const scrollyText = d3.select('#scrolly-presidents .scrolly-text');
     const steps = scrollyText.selectAll('.step');
+    const isMobile = window.innerWidth < 768;
     
     // Wartet, bis das gesamte HTML-Dokument geladen ist, bevor die Grafik initialisiert wird.
     document.addEventListener('DOMContentLoaded', function() {
@@ -321,7 +322,7 @@
             // Richte Scrollama ein
             scroller.setup({
                 step: '.scrolly-text .step', // Welche Elemente sollen beobachtet werden?
-                offset: 0.5, // Wann wird der Trigger ausgelöst? (0.5 = in der Mitte des Fensters)
+                offset: isMobile ? 0.9 : 0.5, // Mobil: Trigger weit unten (0.9), Desktop: Mitte (0.5)
                 debug: false // auf true setzen, um Hilfslinien zu sehen
             })
             .onStepEnter(handleStepEnter); // Welche Funktion soll bei "Enter" aufgerufen werden?
