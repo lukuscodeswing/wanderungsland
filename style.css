@@ -281,7 +281,7 @@ text-decoration: underline; /* Unterstrich beim Drüberfahren */
     font-size: 1.3rem;
     color: var(--light-gray);
     margin: 0;
-    padding: 10px 0;
+    padding: 1;
 }
 .box-title {
     font-size: 1.5rem;
@@ -525,19 +525,22 @@ a, button, [onclick] {
     .scrolly-vis {
         position: -webkit-sticky;
         position: sticky;
-        top: 0;
+        top: 60px; /* Etwas Abstand zum oberen Rand, damit es nicht direkt klebt */
         width: 100%;
-        height: 50vh; /* Kleinere Höhe */
-        width: 90%;
-        margin: 0 auto 2rem auto;
+        height: 45vh; /* Kleinere Höhe */
+        z-index: 0;
+        margin: 0;
     }
 
     .scrolly-text {
-        width: 90%;
+        width: 100%;
         margin: 0 auto;
     }
 
     .step {
-        margin-bottom: 50vh; /* Weniger Abstand auf Mobilgeräten */
-    }
+        width: 95%;   /* 3. Breite Boxen: Fast den ganzen Platz nutzen */
+        padding: 1rem 1rem; /* 3. Schlankere Boxen: Viel weniger Innenabstand (vorher 3rem) */
+        margin: 0 auto 60vh auto; /* Abstand nach unten, damit man scrollen kann */
+        background-color: rgba(255, 255, 255, 0.95); /* Leicht transparent, wirkt moderner */
+        border-radius: 4px;    }
 }
