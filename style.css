@@ -364,6 +364,7 @@ text-decoration: underline; /* Unterstrich beim Drüberfahren */
     .container {
         padding: 15px;
     }
+
     .box-content {
         padding: 15px;
     }
@@ -525,9 +526,9 @@ a, button, [onclick] {
     .scrolly-vis {
         position: -webkit-sticky;
         position: sticky;
-        top: 60px; /* Etwas Abstand zum oberen Rand, damit es nicht direkt klebt */
+        top: 80px; /* Etwas Abstand zum oberen Rand, damit es nicht direkt klebt */
         width: 100%;
-        height: 45vh; /* Kleinere Höhe */
+        height: 60vh; /* Größere Höhe */
         z-index: 0;
         margin: 0;
     }
@@ -538,9 +539,30 @@ a, button, [onclick] {
     }
 
     .step {
-        width: 95%;   /* 3. Breite Boxen: Fast den ganzen Platz nutzen */
-        padding: 1rem 1rem; /* 3. Schlankere Boxen: Viel weniger Innenabstand (vorher 3rem) */
+        width: 100%;   /* Volle Breite für mobile Geräte */
+        padding: 1rem 1.5rem; /* Etwas seitlicher Abstand für Lesbarkeit */
         margin: 0 auto 60vh auto; /* Abstand nach unten, damit man scrollen kann */
         background-color: rgba(255, 255, 255, 0.95); /* Leicht transparent, wirkt moderner */
-        border-radius: 4px;    }
+        border-radius: 0px;    /* Keine abgerundeten Ecken bei voller Breite */
+    }
+
+    /* Spezifische Anpassungen für Seiten mit Scrolly-Grafiken auf Mobilgeräten */
+    .page-with-scrolly .content-wrapper {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .page-with-scrolly .content-box {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        border-radius: 0;
+        padding: 2rem 1rem;
+    }
+    .page-with-scrolly .article-body-content {
+        margin-top: 1rem; /* Abstand nach oben verringern */
+    }
+    .page-with-scrolly .step {
+        padding: 1rem 0.5rem; /* Minimales Padding, damit Grafiken/Text maximal breit sind */
+    }
 }
