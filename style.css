@@ -565,4 +565,13 @@ a, button, [onclick] {
     .page-with-scrolly .step {
         padding: 1rem 0.5rem; /* Minimales Padding, damit Grafiken/Text maximal breit sind */
     }
+
+    /* NEU: Grafik-Container auf volle Breite zwingen, damit die SVG den Platz nutzt */
+    .page-with-scrolly .chart-container,
+    .page-with-scrolly .chart-header,
+    .page-with-scrolly .chart-intro {
+        max-width: none; /* Hebt die 800px-Beschränkung auf */
+        padding-left: 1rem; /* Etwas seitlicher Abstand, damit es nicht am Rand klebt */
+        padding-right: 1rem;
+    }
 }

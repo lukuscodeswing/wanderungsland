@@ -34,7 +34,9 @@
             // Achsen erstellt und gezeichnet, Schauspieler in Position gebracht, ihr Weg festgelegt
             // --- D3.js Grafik-Setup ---
             // Definiere eine "logische" Größe für unser internes Koordinatensystem.
-            const margin = { top: 30, right: 40, bottom: 20, left: 60 }; // Angepasste Margins für die Grafik
+            const margin = isMobile
+                ? { top: 30, right: 10, bottom: 20, left: 10 } // Kleinere Ränder für Mobile
+                : { top: 30, right: 40, bottom: 20, left: 60 }; // Originale Ränder für Desktop
             const logicalWidth = 600;
             const logicalHeight = 450; // Ein 4:3 Seitenverhältnis
             const width = logicalWidth - margin.left - margin.right;
@@ -99,10 +101,18 @@
                 .attr("class", "y-axis")
                 .call(d3.axisLeft(y)
                     .ticks(5) // Nicht zu viele Striche
+                    .tickSize(0.5) // Kleine Tick-Striche, da wir die Labels nach innen verschieben
                     .tickFormat(d => d / 1000000 + " Mio.") // Formatierung: "300 Mio." statt "300000000"
-                );   
+                );
 
-            // 2. Die Generatoren definieren 
+            // Y-Achsen-Beschriftung nach innen verschieben und Achsenlinie entfernen
+            yAxis.select(".domain").remove();
+            yAxis.selectAll(".tick text")
+                .attr("text-anchor", "start") // Text linksbündig ausrichten
+                .attr("dx", "0.5em"); // Text ein Stück nach rechts rücken
+
+
+            // 2. Die Generatoren definieren
             // Aufführung: Die Schauspielers                
             // Area-Generatoren definieren (Darsteller für die Flächen unter den Linien)
             // Eine "area" ist wie eine "line", hat aber zusätzlich eine Unterkante (y0).
@@ -214,11 +224,19 @@
                 // 1.1. Die Y-Achse visuell anpassen (mit Animation)
                 svg.select(".y-axis")
                     .transition()
-                    .duration(2000) // Dauer: 1 Sekunde
+                    .duration(2000) // Dauer: 2 Sekunden
                     .call(d3.axisLeft(y)
                         .ticks(5)
+                        .tickSize(0.5) // Auch hier die Ticks klein
                         .tickFormat(d => d / 1000000 + " Mio.")
-                    );
+                    )
+                    .on("end", function() {
+                        // Nach der Transition sicherstellen, dass die Labels korrekt ausgerichtet sind
+                        d3.select(this).select(".domain").remove();
+                        d3.select(this).selectAll(".tick text")
+                            .attr("text-anchor", "start")
+                            .attr("dx", "0.5em");
+                    });
 
                 // 2. Den Vorhang (clipRect) aufziehen
                 // Wir berechnen, wie viele Pixel breit der Bereich bis zum aktuellen Jahr (xDomainMax) ist.

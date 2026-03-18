@@ -30,7 +30,9 @@
             // --- D3.js Grafik-Setup ---
             console.log("Schritt C: Grafik-Setup beginnt.");
             // Definiere eine "logische" Größe für unser internes Koordinatensystem.
-            const margin = { top: 30, right: 40, bottom: 20, left: 40 }; // Angepasste Margins für die Grafik
+            const margin = isMobile
+                ? { top: 30, right: 10, bottom: 20, left: 10 } // Kleinere Ränder für Mobile
+                : { top: 30, right: 40, bottom: 20, left: 40 }; // Originale Ränder für Desktop
             const logicalWidth = 600;
             const logicalHeight = 450; // Ein 4:3 Seitenverhältnis
             const width = logicalWidth - margin.left - margin.right;
