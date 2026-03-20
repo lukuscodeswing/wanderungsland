@@ -73,6 +73,7 @@
             // Zeichne die Achsen
             svg.append('g')
                 .attr('transform', `translate(0,${height})`)
+                .style("font-size", isMobile ? "12px" : "10px") // NEU: Größere Schrift
                 .call(d3.axisBottom(x).ticks(d3.timeYear.every(20)))
                 .selectAll(".tick text") // Wähle alle Text-Elemente der Ticks aus
                 .each(function(d, i, nodes) {
@@ -95,7 +96,7 @@
             .attr("dy", "0.32em") // Kleine vertikale Korrektur für perfekte Ausrichtung
             .attr("text-anchor", "start") // Text beginnt an x=0
             .attr("dx", "0.5em") // Etwas nach rechts verschieben (innerhalb des Diagramms)
-            .style("font-family", "Arial").style("font-size", "14px")
+            .style("font-family", "Arial").style("font-size", isMobile ? "18px" : "16px") // Nochmal größer
             .style("fill", "#777") //  Farbton
             .style("font-weight", "200") 
             .text("positiv");
@@ -104,7 +105,7 @@
             .attr("x", 0).attr("y", y(-0.9)).attr("dy", "0.32em") // x=0, y(-0.9)
             .attr("text-anchor", "start") // Text beginnt an x=0
             .attr("dx", "0.5em") // Etwas nach rechts verschieben (innerhalb des Diagramms)
-            .style("font-family", "Arial").style("font-size", "14px")
+            .style("font-family", "Arial").style("font-size", isMobile ? "18px" : "16px") // Nochmal größer
             .style("fill", "#777") //  Farbton
             .style("font-weight", "200") 
             .text("negativ");
@@ -175,7 +176,7 @@
             const labels = svg.append("g")
                 .attr("class", "labels")
                 .attr("font-family", "sans-serif")
-                .attr("font-size", 12)
+                .attr("font-size", isMobile ? 14 : 12) // Größere Labels für die Namen
                 .attr("text-anchor", "middle"); // Standard-Ausrichtung auf "middle" setzen, das passt jetzt zur neuen Logik
             
             let previousEndYear = 1921; // Variable, um den Zustand des vorherigen Steps zu speichern
@@ -193,10 +194,16 @@
 
             // --- 3. SCROLLAMA-FUNKTIONEN ---
             // Diese Funktion wird aufgerufen, wenn ein neuer Step in den Fokus rückt
+            let currentStepIndex = null; // Zustandsspeicher
+
             function handleStepEnter(response) {
                 // response.element ist das DOM-Element des Steps
                 const stepIndex = d3.select(response.element).attr('data-step');
                 
+                // Doppelte Ausführung verhindern (wichtig für mobile Split-Steps)
+                if (stepIndex === currentStepIndex) return;
+                currentStepIndex = stepIndex;
+
                 // Definiere die Endjahre für jeden Schritt
                 const endYears = {
                     '1': 1944, // Roosevelt
@@ -305,7 +312,7 @@
                             .attr("text-anchor", "middle")
                             .attr("class", isImportantPresident ? "label-important" : null)
                             .style("font-weight", isImportantPresident ? "bold" : "normal")
-                            .style("font-size", "11px")
+                            .style("font-size", isImportantPresident ? (isMobile ? "14px" : "12px") : (isMobile ? "12px" : "11px"))
                             .style("fill", "#333")
                             .style("opacity", 0) // Start unsichtbar
                             .transition()
@@ -335,8 +342,14 @@
             // und sicherstellt, dass jeder Textabschnitt vollständig aus dem Bild scrollen kann.
             steps.each(function() {
                 // `this` ist das aktuelle DOM-Element des ".step"
+                const step = d3.select(this);
+                let extraClasses = '';
+                if (step.classed('desktop-only')) extraClasses += ' desktop-only';
+                if (step.classed('mobile-only')) extraClasses += ' mobile-only';
+
                 // Wir fügen ein neues <div> direkt nach dem aktuellen Step-Element ein.
-                this.insertAdjacentHTML('afterend', '<div class="step-puffer" style="height: 75vh;"></div>');
+                // WICHTIG: Wir geben ihm dieselben Sichtbarkeits-Klassen wie dem Step selbst!
+                this.insertAdjacentHTML('afterend', `<div class="step-puffer${extraClasses}" style="height: 75vh;"></div>`);
             });
 
         }).catch(function (error) {

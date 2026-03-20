@@ -99,17 +99,21 @@
             // y-Achse
             const yAxis = svg.append("g")
                 .attr("class", "y-axis")
+                // Wir verwenden axisLeft, um die Achse links zu positionieren
                 .call(d3.axisLeft(y)
                     .ticks(5) // Nicht zu viele Striche
-                    .tickSize(0.5) // Kleine Tick-Striche, da wir die Labels nach innen verschieben
-                    .tickFormat(d => d / 1000000 + " Mio.") // Formatierung: "300 Mio." statt "300000000"
-                );
+                    .tickSize(-width) // Negative Größe zeichnet Gitterlinien nach rechts
+                    .tickFormat(d => d === 0 ? "" : d / 1000000 + " Mio.") // 0 ausblenden, sonst Formatierung
+                )
+                .style("font-size", isMobile ? "12px" : "10px"); // Größere Schrift auf Mobile
 
-            // Y-Achsen-Beschriftung nach innen verschieben und Achsenlinie entfernen
-            yAxis.select(".domain").remove();
             yAxis.selectAll(".tick text")
-                .attr("text-anchor", "start") // Text linksbündig ausrichten
-                .attr("dx", "0.5em"); // Text ein Stück nach rechts rücken
+                .attr("x", 4) // Verschiebt den Text nach rechts (ins Chart)
+                .attr("dy", -4) // Positioniert den Text leicht über der Gitterlinie
+                .attr("text-anchor", "start"); // Richtet den Text linksbündig aus
+
+            // X-Achse Schriftgröße
+            xAxis.style("font-size", isMobile ? "12px" : "10px");
 
 
             // 2. Die Generatoren definieren
@@ -186,9 +190,15 @@
 
             // Aufführung SCHRITT 4: das Drehbuch (SCROLLAMA LOGIK) ---
 
+            let currentStepIndex = null; // Speichert den aktuellen Schritt, um unnötige Neurenderings zu vermeiden
+
             function handleStepEnter(response) {
                 // Welcher Step sind wir? (1, 2, 3...)
                 const stepIndex = response.element.dataset.step;
+
+                // Wenn wir schon in diesem Step sind (z.B. bei aufgeteiltem Text auf Mobile), nichts tun.
+                if (stepIndex === currentStepIndex) return;
+                currentStepIndex = stepIndex;
 
                 // Regieanweisung: Welcher Zoom-Level (maximaler y-Wert) gilt für welchen Step?
                 // Step 1: Fokus auf den Anfang (kleine Zahlen) - bis 1890/ 60Mio
@@ -224,18 +234,20 @@
                 // 1.1. Die Y-Achse visuell anpassen (mit Animation)
                 svg.select(".y-axis")
                     .transition()
-                    .duration(2000) // Dauer: 2 Sekunden
+                    .duration(2000)
+                    .on("start", function() {
+                        // Verhindert Ruckeln, indem die Labels während der Transition ausgeblendet werden.
+                        d3.select(this).selectAll(".tick text").style("opacity", 0);
+                    })
                     .call(d3.axisLeft(y)
                         .ticks(5)
-                        .tickSize(0.5) // Auch hier die Ticks klein
-                        .tickFormat(d => d / 1000000 + " Mio.")
+                        .tickSize(-width) // Breite Hilfslinien nach rechts
+                        .tickFormat(d => d === 0 ? "" : d / 1000000 + " Mio.") // Auch hier 0 ausblenden
                     )
                     .on("end", function() {
-                        // Nach der Transition sicherstellen, dass die Labels korrekt ausgerichtet sind
-                        d3.select(this).select(".domain").remove();
-                        d3.select(this).selectAll(".tick text")
-                            .attr("text-anchor", "start")
-                            .attr("dx", "0.5em");
+                        // Am Ende der Transition werden die Labels korrekt formatiert und wieder eingeblendet.
+                        d3.select(this).selectAll(".tick text").attr("x", 4).attr("dy", -4).attr("text-anchor", "start")
+                            .transition().duration(250).style("opacity", 1); // Sanftes Einblenden
                     });
 
                 // 2. Den Vorhang (clipRect) aufziehen

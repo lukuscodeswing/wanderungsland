@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="page-with-scrolly" style="--smallheader-bg: rgba(119, 119, 119, 0.2);">
+<body class="page-with-scrolly">
     <!-- Videologik (funktioniert über videoloader.js) -->
     <script src="videoloader.js"></script>
 
@@ -37,7 +37,7 @@
         
     <main class="content-wrapper">
     <!-- Titel-Box -->
-    <div class="content-box transparent_smallheader" onclick="window.location.href='ueberuns.html'">
+    <div class="content-box smallheader" onclick="window.location.href='ueberuns.html'">
         <h2 class="secondary-title" id="secondaryTitle">Studie zeigt neue, alte Härte</h2>
         <h1 class="main-title" id="mainTitle">Trumps Migrations-Rhetorik ist ein <br> Jahrhundert-Rückfall</h1>
         <h3 class="author-title" id="authorTitle">von Lukas Wessling</h3>
@@ -51,30 +51,70 @@
         <br>
         <p>Damit setzt Trump fort, was er schon in seiner ersten Amtszeit begann. Da sprach er über Eingewanderte, wie das US-Präsidenten knapp ein Jahrhundert lang nicht mehr getan hatten, wie eine Datenanalyse Forschender aus Stanford, Princeton und Cambridge von 2022 zeigt. Demnach ist Trump der erste Präsident seit Franklin D. Roosevelt, der Einwanderung öfter als Problem darstellte, denn als Chance.</p>
         <br>
-        <br>
+
+
         <section id="scrolly-presidents">
             <div class="scrolly-vis"></div>
             <div class="scrolly-text">
-                <div class="step" data-step="1">
+            <!-- Scrollytexte für Desktop: größere Blöcke -->
+                <div class="step desktop-only" data-step="1">
                     <p>So hatte etwa Franklin D. <b>Roosevelt</b> schon 1936 gesagt, die US-amerikanische Zivilisation gründe sich auf einen <a href="https://www.presidency.ucsb.edu/documents/address-roosevelt-park-new-york-city">"ständigen Zustrom menschlicher Ressourcen, den die Alte Welt an unsere Strände spülte"</a>. Eine Erzählung, die in den folgenden Jahrzehnten immer stärker prägen sollte, wie Politiker über Neuankömmlinge sprachen.</p>
                 </div>
-                <div class="step" data-step="2">
+                <div class="step desktop-only" data-step="2">
                     <p>Präsident John F. <b>Kennedy</b> etwa plädierte 1963 für eine tiefgreifende Reform des Einwanderunggssystems: Wer am Besten zum Wohl der USA beitragen könne, der solle einreisen dürfen - egal wo er geboren wurde. Eine Idee, die wenige Jahre später Wirklichkeit wurde und stark veränderte, von woher Menschen fortan in die USA einwanderten.</p>
                 </div>
-                <div class="step" data-step="3">
+                <div class="step desktop-only" data-step="3">
                     <p>Der Republikaner Ronald Reagan betonte 1984 <a href="https://www.reaganlibrary.gov/archives/speech/remarks-white-house-ceremony-unveil-commemorative-stamp-honoring-hispanic-americans#:~:text=The%20stamp%20that%20we%20issue,here%20today%20in%20this%20tribute">"die Würde und den Stolz"</a> lateinamerikanischer Zugewanderter. Er dankte denen unter ihnen, die ihr Leben aufs Spiel gesetzt hätten für die USA - sie seinen "wahrhaft amerikanische Helden".</p>
                 </div>
-                <div class="step" data-step="4"> 
+                <div class="step desktop-only" data-step="4"> 
                     <p>Der demokratische Präsident Bill <b>Clinton</b> versprach um die Jahrtausendwende eine sichere Grenze, kündigte an, seine Regierung werde mehr Grenzbeamte einsetzen als je zuvor, er wolle "kriminelle Ausländer abschieben". Gleichzeitig warb Clinton dafür, legalen Immigranten Pflegeleistungen zu finanzieren, <a href="https://avalon.law.yale.edu/20th_century/clinton2.asp">beklagte, die USA unterlägen in einer Art Fluch</a>: Neue Einwanderer würden immer wieder zur Zielscheibe alter Vorurteile.</p>
                 </div>
-                <div class="step" data-step="5">
+                <div class="step desktop-only" data-step="5">
                     <p>Ähnlich sein Nachfolger George W. <b>Bush</b>: Er redete viel über die Sicherung der Grenze. Davon, dass es seine wichtigste Aufgabe sei, "die Heimat zu schützen". Gleichzeitig führte er den "Monat des irisch-amerikanischen Erbes" ein. Die USA würden <a href="https://georgewbush-whitehouse.archives.gov/news/releases/2001/02/text/20010226-14.html">"bereichert, gestärkt und beschenkt"</a> durch die Nachfahren irischer Einwanderer, sagte er. </p>
                 </div>
-                <div class="step" data-step="6">
+                <div class="step desktop-only" data-step="6">
                     <p>Barack <b>Obama</b> nannte die USA immer wieder ein <a href="https://www.presidency.ucsb.edu/documents/the-presidents-weekly-address-331?">"Land der Einwanderer"</a>. Ein Land, das von Einwanderern bereichert und gestärkt werde. Das gut daran tue, sie willkommen zu heißen.</p>
                 </div>
-                <div class="step" data-step="7">
+                <div class="step desktop-only" data-step="7">
                     <p>Jahrzehntelang hatten US-Präsidenten überwiegend positiv von Eingewanderten gesprochen. Der 2016 gewählte Donald <b>Trump</b> brach mit dieser Linie: Er feierte den Bau von Grenzanlagen, sprach von einer "Invasion", vom Chaos und der Kriminalität, die über die Grenze kämen.</p>
+                </div>
+
+            <!-- Scrollytexte für Mobile: Blöcke in Häppchen aufgeteilt -->
+                <div class="step mobile-only" data-step="1">
+                    <p>So hatte Franklin D. <b>Roosevelt</b> schon 1936 gesagt, die US-amerikanische Zivilisation gründe sich auf einen <a href="https://www.presidency.ucsb.edu/documents/address-roosevelt-park-new-york-city">"ständigen Zustrom menschlicher Ressourcen, den die Alte Welt an unsere Strände spülte"</a>.</p>
+                </div>
+                <div class="step mobile-only" data-step="1">
+                    <p>Eine Erzählung, die in den folgenden Jahrzehnten immer stärker prägen sollte, wie Politiker über Neuankömmlinge sprachen.</p>
+                </div>
+                <div class="step mobile-only" data-step="2">
+                    <p>Präsident John F. <b>Kennedy</b> etwa plädierte 1963 für eine tiefgreifende Reform des Einwanderunggssystems: Wer am Besten zum Wohl der USA beitragen könne, der solle einreisen dürfen - egal wo er geboren wurde.</p>
+                </div>
+                <div class="step mobile-only" data-step="2">
+                    <p>Eine Idee, die wenige Jahre später Wirklichkeit wurde und stark veränderte, von woher Menschen fortan in die USA einwanderten.</p>
+                </div>
+                <div class="step mobile-only" data-step="3">
+                    <p>Der Republikaner Ronald Reagan betonte 1984 <a href="https://www.reaganlibrary.gov/archives/speech/remarks-white-house-ceremony-unveil-commemorative-stamp-honoring-hispanic-americans#:~:text=The%20stamp%20that%20we%20issue,here%20today%20in%20this%20tribute">"die Würde und den Stolz"</a> lateinamerikanischer Zugewanderter. Er dankte denen unter ihnen, die ihr Leben aufs Spiel gesetzt hätten für die USA - sie seinen "wahrhaft amerikanische Helden".</p>
+                </div>
+                <div class="step mobile-only" data-step="4"> 
+                    <p>Der demokratische Präsident Bill <b>Clinton</b> versprach um die Jahrtausendwende eine sichere Grenze, kündigte an, seine Regierung werde mehr Grenzbeamte einsetzen als je zuvor, er wolle "kriminelle Ausländer abschieben".</p>
+                </div>
+                <div class="step mobile-only" data-step="4"> 
+                    <p>Gleichzeitig warb Clinton dafür, legalen Immigranten Pflegeleistungen zu finanzieren, <a href="https://avalon.law.yale.edu/20th_century/clinton2.asp">beklagte, die USA unterlägen in einer Art Fluch</a>: Neue Einwanderer würden immer wieder zur Zielscheibe alter Vorurteile.</p>
+                </div>
+                <div class="step mobile-only" data-step="5">
+                    <p>Ähnlich sein Nachfolger George W. <b>Bush</b>: Er redete viel über die Sicherung der Grenze. Davon, dass es seine wichtigste Aufgabe sei, "die Heimat zu schützen".</p>
+                </div>
+                <div class="step mobile-only" data-step="5">
+                    <p>Gleichzeitig führte er den "Monat des irisch-amerikanischen Erbes" ein. Die USA würden <a href="https://georgewbush-whitehouse.archives.gov/news/releases/2001/02/text/20010226-14.html">"bereichert, gestärkt und beschenkt"</a> durch die Nachfahren irischer Einwanderer, sagte er. </p>
+                </div>
+                <div class="step mobile-only" data-step="6">
+                    <p>Barack <b>Obama</b> nannte die USA immer wieder ein <a href="https://www.presidency.ucsb.edu/documents/the-presidents-weekly-address-331?">"Land der Einwanderer"</a>. Ein Land, das von Einwanderern bereichert und gestärkt werde. Das gut daran tue, sie willkommen zu heißen.</p>
+                </div>
+                <div class="step mobile-only" data-step="7">
+                    <p>Jahrzehntelang hatten US-Präsidenten überwiegend positiv von Eingewanderten gesprochen. Der 2016 gewählte Donald <b>Trump</b> brach mit dieser Linie:</p>
+                </div>
+                <div class="step mobile-only" data-step="7">
+                    <p>Er feierte den Bau von Grenzanlagen, sprach von einer "Invasion", vom Chaos und der Kriminalität, die über die Grenze kämen.</p>
                 </div>
             </div>
         </section>
@@ -95,38 +135,67 @@
         <section id="scrolly-population">
             <div class="scrolly-vis"></div>
              <div class="scrolly-text">
-        <!-- Step 1: Zoom nah dran (1850-1890 Fokus) -->
-        <div class="step" data-step="1">
-            <p>Bis <b>1890</b> kamen 14,3 Millionen, vorwiegend aus Nordeuropa:</p> 
-            <p>- ein Drittel aus Deutschland</p> 
-            <p>- je ein Fünftel aus Irland und Großbritannien</p> 
-        </div>
-        <!-- Step 2: 1920 -->
-        <div class="step" data-step="2">
-            <p>Bis <b>1919</b> folgte die zweite Welle: 18,2 Millionen Menschen, vor allem aus Süd- und Osteuropa:</p>
-            <p>- je rund ein Fünftel aus Italien und Österreich-Ungarn</p>
-            <p>- je ein Sechstel aus Russland und Polen</p>         
-    </div>
-        <!-- Step 3: 1950 -->
-        <div class="step" data-step="3">
-            <p>Um 1890 und 1910 war deshalb jeder siebte US-Einwohner im Ausland geboren. Danach wuchs die Bevölkerung, der <b>Anteil der Zuwanderer sank</b> wieder:</p> 
-        </div>
-        <!-- Step 4: 1970 -->
-        <div class="step" data-step="4">
-            <p>Im Jahr <b>1970</b> war nur noch jeder Zwanzigste außerhalb der USA geboren. Erst ein neues Einwanderungsgesetz änderte das.</p>
-        </div>
-        <!-- Step 5: 1990 -->
-        <div class="step" data-step="5">
-            <p>Die Neuregelung von 1968 stellte das System auf den Kopf. Es beurteilte potenzielle Einwanderer nicht mehr nach deren Herkunftsland, sondern nach ihren familiären Beziehungen in die USA und ihrem Nutzen für den US-Arbeitsmarkt. Obwohl die Gesetzgeber keine radikalen Veränderungen erwarteten, führte die Reform zu einer <b>dramatischen Verschiebung</b>:</p>
-        </div>
-        <!-- Step 5: 2023 -->
-        <div class="step" data-step="6">
-            <p>Immer mehr Menschen aus Asien, der Karibik und Lateinamerika immigrierten. Die <b>dritte Einwanderungswelle</b> hatte begonnen. 72 Millionen Menschen kamen in den vergangenen 60 Jahren in die USA: 
-                <br>- ein Viertel aus Mexiko
-                <br>- ein Viertel aus dem Rest Lateinamerikas 
-                <br>- ein Viertel aus Asien
-                <br>- ein Achtel aus Europa</p>
-    </div>
+            <!-- Scrollytexte für Desktop: größere Blöcke -->
+                <div class="step desktop-only" data-step="1">
+                    <p>Bis <b>1890</b> kamen 14,3 Millionen, vorwiegend aus Nordeuropa:</p> 
+                    <p>- ein Drittel aus Deutschland</p> 
+                    <p>- je ein Fünftel aus Irland und Großbritannien</p> 
+                </div>
+                <div class="step desktop-only" data-step="2">
+                    <p>Bis <b>1919</b> folgte die zweite Welle: 18,2 Millionen Menschen, vor allem aus Süd- und Osteuropa:</p>
+                    <p>- je rund ein Fünftel aus Italien und Österreich-Ungarn</p>
+                    <p>- je ein Sechstel aus Russland und Polen</p>         
+                </div>
+                <div class="step desktop-only" data-step="3">
+                    <p>Um 1890 und 1910 war deshalb jeder siebte US-Einwohner im Ausland geboren. Danach wuchs die Bevölkerung, der <b>Anteil der Zuwanderer sank</b> wieder:</p> 
+                </div>
+                <div class="step desktop-only" data-step="4">
+                    <p>Im Jahr <b>1970</b> war nur noch jeder Zwanzigste außerhalb der USA geboren. Erst ein neues Einwanderungsgesetz änderte das.</p>
+                </div>
+                <div class="step desktop-only" data-step="5">
+                    <p>Die Neuregelung von 1968 stellte das System auf den Kopf. Es beurteilte potenzielle Einwanderer nicht mehr nach deren Herkunftsland, sondern nach ihren familiären Beziehungen in die USA und ihrem Nutzen für den US-Arbeitsmarkt. Obwohl die Gesetzgeber keine radikalen Veränderungen erwarteten, führte die Reform zu einer <b>dramatischen Verschiebung</b>:</p>
+                </div>
+                <div class="step desktop-only" data-step="6">
+                    <p>Immer mehr Menschen aus Asien, der Karibik und Lateinamerika immigrierten. Die <b>dritte Einwanderungswelle</b> hatte begonnen. 72 Millionen Menschen kamen in den vergangenen 60 Jahren in die USA: 
+                        <br>- ein Viertel aus Mexiko
+                        <br>- ein Viertel aus dem Rest Lateinamerikas 
+                        <br>- ein Viertel aus Asien
+                        <br>- ein Achtel aus Europa</p>
+                </div>
+
+            <!-- Scrollytexte für Mobile: Blöcke in Häppchen aufgeteilt -->
+                <div class="step mobile-only" data-step="1">
+                    <p>Bis <b>1890</b> kamen 14,3 Millionen, vorwiegend aus Nordeuropa:</p> 
+                    <p>- ein Drittel aus Deutschland</p> 
+                    <p>- je ein Fünftel aus Irland und Großbritannien</p> 
+                </div>
+                <div class="step mobile-only" data-step="2">
+                    <p>Bis <b>1919</b> folgte die zweite Welle: 18,2 Millionen Menschen, vor allem aus Süd- und Osteuropa:</p>
+                    <p>- je rund ein Fünftel aus Italien und Österreich-Ungarn</p>
+                    <p>- je ein Sechstel aus Russland und Polen</p>         
+                </div>
+                <div class="step mobile-only" data-step="3">
+                    <p>Um 1890 und 1910 war deshalb jeder siebte US-Einwohner im Ausland geboren. Danach wuchs die Bevölkerung, der <b>Anteil der Zuwanderer sank</b> wieder:</p> 
+                </div>
+                <div class="step mobile-only" data-step="4">
+                    <p>Im Jahr <b>1970</b> war nur noch jeder Zwanzigste außerhalb der USA geboren. Erst ein neues Einwanderungsgesetz änderte das.</p>
+                </div>
+                <div class="step mobile-only" data-step="5">
+                    <p>Die Neuregelung von 1968 stellte das System auf den Kopf. Es beurteilte potenzielle Einwanderer nicht mehr nach deren Herkunftsland.</p>
+                </div>
+                <div class="step mobile-only" data-step="5">
+                    <p>Ab nun zählten ihre familiären Beziehungen in die USA und ihr Nutzen für den US-Arbeitsmarkt. Obwohl die Gesetzgeber keine radikalen Veränderungen erwarteten, führte die Reform zu einer <b>dramatischen Verschiebung</b>:</p>
+                </div>
+                <div class="step mobile-only" data-step="6">
+                    <p>Immer mehr Menschen aus Asien, der Karibik und Lateinamerika immigrierten. Die <b>dritte Einwanderungswelle</b> hatte begonnen.</p>
+                </div>
+                <div class="step mobile-only" data-step="6">                    
+                    <p>72 Millionen Menschen kamen in den vergangenen 60 Jahren in die USA: 
+                        <br>- ein Viertel aus Mexiko
+                        <br>- ein Viertel aus dem Rest Lateinamerikas 
+                        <br>- ein Viertel aus Asien
+                        <br>- ein Achtel aus Europa</p>
+                </div>
 </section>
 
         <br>
@@ -140,36 +209,66 @@
         <section id="scrolly-congress">
             <div class="scrolly-vis"></div>
              <div class="scrolly-text">
+<!-- Scrollytexte für Desktop: größere Blöcke -->
+                <div class="step desktop-only" data-step="1">
+                    <p>Frühe Einwanderungsgegner (<b>1880 bis 1934</b>) konzentrierten sich demnach stark auf die "Bedrohung" und "Gefahr", die "unerwünschte" Eindringlinge darstellten. Sie sprachen von deren "Verstößen" und der Notwendigkeit des "Ausschlusses". </p>
+                </div>
+                <div class="step desktop-only" data-step="1">
+                    <p>Die Befürworter priesen Zuwanderer primär wegen ihres "Fleißes" und ihres "Nutzens für das Land".</p>
+                </div>
+                <div class="step desktop-only" data-step="2">
+                    <p><b style="color: var(--accent-color);">Republikaner&nbsp;</b> und <b style="color: var(--primary-color);">Demokraten</b>, die im Kongress über Einwanderung sprachen, unterschieden sich dabei in ihrer Sprache kaum: Einwanderung war für beide Parteien vor allem ein Problem.</p>
+                </div>
+                <div class="step desktop-only" data-step="3">
+                    <p>Zwischen dem Zweiten Weltkrieg und der Neuregelung der Einwanderung von 1968 wurde die <b>Rhetorik wohlwollender</b>. Beide Parteien betonten öfter die positiven Seiten von Migration. Nach dem Holocaust rückten außerdem verstärkt "humanitäre Belange" in den Vordergrund.</p>
+                </div>
+                <div class="step desktop-only" data-step="4">
+                    <p>Seit den späten 1970ern <b>drifteten Demokraten und Republikaner</b> immer weiter <b>auseinander</b>.</p>
+                </div>
+                <div class="step desktop-only" data-step="5">
+                    <p>Heute teilen sich beide Partien die Themenpalette klar auf: Die <b style="color: var(--accent-color);">Republikaner&nbsp;</b> nutzen in Migrationsdebatten viel öfter Begriffe wie <b>Bedrohung</b>, <b>Legalität</b> oder <b>Kriminalität</b>.</p>
+                </div>
+                <div class="step desktop-only" data-step="6">
+                    <p>Die <b style="color: var(--primary-color);">Demokraten</b> sprechen lieber über <b>wirtschaftlichen Nutzen</b>, über die <b>Familien</b> der Eingewanderten oder deren <b>Benachteiligung</b>. Über den "Stolz" auf das Erbe und die Beiträge von einst verunglimpften Gemeinschaften wie den Iren oder Italienern.</p>
+                </div>
+                <div class="step desktop-only" data-step="7">
+                    <p>Die Republikaner klangen der Studie zufolge <b>Anfang der 2020er Jahre so abweisend wie</b> das US-Parlament vor einem Jahrhundert, als strenge Einwanderungsquoten galten. <b>In den 1920er Jahren</b> mussten vor allem Menschen aus China als Feindbilder herhalten. Heute sind es Menschen aus Mexiko. Eine "verblüffende Ähnlichkeit" erkennen die Forschenden darin, wie über beide Gruppen gesprochen wird und wurde.</p>
+                </div>
 
-        <!-- Step 1: bis 1900 -->
-        <div class="step" data-step="1">
-            <p>Frühe Einwanderungsgegner (<b>1880 bis 1934</b>) konzentrierten sich demnach stark auf die "Bedrohung" und "Gefahr", die "unerwünschte" Eindringlinge darstellten. Sie sprachen von deren "Verstößen" und der Notwendigkeit des "Ausschlusses". <br>
-                Frühe Befürworter priesen Zuwanderer primär wegen ihres "Fleißes" und ihres "Nutzens für das Land".</p>
-        </div>
-        <!-- Step 2: bis 1940 -->
-        <div class="step" data-step="2">
-            <p><b style="color: var(--accent-color);">Republikaner&nbsp;</b> und <b style="color: var(--primary-color);">Demokraten</b>, die im Kongress über Einwanderung sprachen, unterschieden sich dabei in ihrer Sprache kaum: Einwanderung war für beide Parteien vor allem ein Problem.</p>
-        </div>
-        <!-- Step 3: bis 1970 -->
-        <div class="step" data-step="3">
-            <p>Zwischen dem Zweiten Weltkrieg und der Neuregelung der Einwanderung von 1968 wurde die <b>Rhetorik wohlwollender</b>. Beide Parteien betonten öfter die positiven Seiten von Migration. Nach dem Holocaust rückten außerdem verstärkt "humanitäre Belange" in den Vordergrund.</p>
-        </div>
-        <!-- Step 4: bis 2000 -->
-        <div class="step" data-step="4">
-            <p>Seit den späten 1970ern <b>drifteten Demokraten und Republikaner</b> immer weiter <b>auseinander</b>.</p>
-        </div>
-        <!-- Step 5: Reps bis 2022 -->
-        <div class="step" data-step="5">
-            <p>Heute teilen sich beide Partien die Themenpalette klar auf: Die <b>Republikaner</b> nutzen in Migrationsdebatten viel öfter Begriffe wie <b>Bedrohung</b>, <b>Legalität</b> oder <b>Kriminalität</b>.</p>
-        </div>
-        <!-- Step 6: Dems bis 2022 -->
-        <div class="step" data-step="6">
-            <p>Die <b>Demokraten</b> sprechen lieber über <b>wirtschaftlichen Nutzen</b>, über die <b>Familien</b> der Eingewanderten oder deren <b>Benachteiligung</b>. Über den "Stolz" auf das Erbe und die Beiträge von einst verunglimpften Gemeinschaften wie den Iren oder Italienern.</p>
-        </div>
-        <!-- Step 7: negative Werte -->
-        <div class="step" data-step="7">
-            <p>Die Republikaner klangen der Studie zufolge <b>Anfang der 2020er Jahre so abweisend wie</b> das US-Parlament vor einem Jahrhundert, als strenge Einwanderungsquoten galten. <b>In den 1920er Jahren</b> mussten vor allem Menschen aus China als Feindbilder herhalten. Heute sind es Menschen aus Mexiko. Eine "verblüffende Ähnlichkeit" erkennen die Forschenden darin, wie über beide Gruppen gesprochen wird und wurde.</p>
-        </div>
+<!-- Scrollytexte für Mobile: Blöcke in Häppchen aufgeteilt -->
+                <div class="step mobile-only" data-step="1">
+                    <p>Frühe Einwanderungsgegner (<b>1880 bis 1934</b>) konzentrierten sich demnach stark auf die "Bedrohung" und "Gefahr", die "unerwünschte" Eindringlinge darstellten.</p>
+                </div>
+                    <div class="step mobile-only" data-step="1">
+                    <p>Sie sprachen von deren "Verstößen" und der Notwendigkeit des "Ausschlusses". </p>
+                </div>
+                <div class="step mobile-only" data-step="1">
+                    <p>Befürworter priesen Zuwanderer primär wegen ihres "Fleißes" und ihres "Nutzens für das Land".</p>
+                </div>
+                <div class="step mobile-only" data-step="2">
+                    <p><b style="color: var(--accent-color);">Republikaner&nbsp;</b> und <b style="color: var(--primary-color);">Demokraten</b>, die im Kongress über Einwanderung sprachen, unterschieden sich dabei in ihrer Sprache kaum: Einwanderung war für beide Parteien vor allem ein Problem.</p>
+                </div>
+                <div class="step mobile-only" data-step="3">
+                    <p>Zwischen dem Zweiten Weltkrieg und der Neuregelung der Einwanderung von 1968 wurde die <b>Rhetorik wohlwollender</b>.</p>
+                </div>
+                    <div class="step mobile-only" data-step="3">
+                    <p>Beide Parteien betonten öfter die positiven Seiten von Migration. Nach dem Holocaust rückten außerdem verstärkt "humanitäre Belange" in den Vordergrund.</p>
+                </div>
+                <div class="step mobile-only" data-step="4">
+                    <p>Seit den späten 1970ern <b>drifteten Demokraten und Republikaner</b> immer weiter <b>auseinander</b>.</p>
+                </div>
+                <div class="step mobile-only" data-step="5">
+                    <p>Heute teilen sich beide Partien die Themenpalette klar auf: Die <b style="color: var(--accent-color);">Republikaner&nbsp;</b> nutzen in Migrationsdebatten viel öfter Begriffe wie <b>Bedrohung</b>, <b>Legalität</b> oder <b>Kriminalität</b>.</p>
+                </div>
+                <div class="step mobile-only" data-step="6">
+                    <p>Die <b style="color: var(--primary-color);">Demokraten</b> sprechen lieber über <b>wirtschaftlichen Nutzen</b>, über die <b>Familien</b> der Eingewanderten oder deren <b>Benachteiligung</b>. Über den "Stolz" auf das Erbe und die Beiträge von einst verunglimpften Gemeinschaften wie den Iren oder Italienern.</p>
+                </div>
+                <div class="step mobile-only" data-step="7">
+                    <p>Die Republikaner klangen der Studie zufolge <b>Anfang der 2020er Jahre so abweisend wie</b> das US-Parlament vor einem Jahrhundert, als strenge Einwanderungsquoten galten.</p>
+                </div>
+                <div class="step mobile-only" data-step="7">
+                    <p><b>In den 1920er Jahren</b> mussten vor allem Menschen aus China als Feindbilder herhalten. Heute sind es Menschen aus Mexiko. Eine "verblüffende Ähnlichkeit" erkennen die Forschenden darin, wie über beide Gruppen gesprochen wird und wurde.</p>
+                </div>
     </section>
         <br>
         <p>Ging es im US-Kongress früher um Menschen aus China und heute um Menschen aus Mexiko, werden und wurden die Zuwanderer zu "bedrohlichen Außenseitern" zu Tieren oder zu "billigen Arbeitskräften".</p> 

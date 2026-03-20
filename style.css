@@ -4,10 +4,11 @@
     box-sizing: border-box;
 }
 :root {
-    --primary-color: #00AEF3;
+    --primary-color: #888 ;
     --secondary-color: #777777;
-    --light-gray: #dddddd;
-    --accent-color: #E81B23;
+    --light-gray: #d6d6d6;
+    --main-white: #fff;
+    --accent-color: #050505;
     --background-color: #F6F6F6;
     --text-color: #333;
     --box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -256,32 +257,32 @@ text-decoration: underline; /* Unterstrich beim Drüberfahren */
 }
 /* Titelbox für Artikel mit transparentem Look */
 .content-box.transparent_smallheader {
-    margin-top: 2em;
-    margin-bottom: 2em;
+    margin-top: 12vh;    /* Desktop: Titel rutscht ins vertikale Zentrum */
+    margin-bottom: 40vh; /* Desktop: Viel Platz nach unten, schiebt Text aus dem Bild */
+    padding: 60px 5px;
     background: var(--smallheader-bg);
 }
 .transparent_main-title {
     text-align: center;
     font-size: 2rem;
-    font-weight: bold;
-    color: var(--background-color);
+    font-weight: bolder;
+    color: var(--main-white);
     margin: 0;
-    padding: 10px 0;
+    padding: 10px 0 40px 0;
 }
 .transparent_author-title {
     text-align: center;
     font-size: 1rem;
-    font-style: italic;
+    font-weight: lighter;
     color: var(--light-gray);
     margin: 0;
-    padding: 0;
 }
 .transparent_secondary-title {
     text-align: center;
     font-size: 1.3rem;
+    font-weight: lighter;
     color: var(--light-gray);
     margin: 0;
-    padding: 1;
 }
 .box-title {
     font-size: 1.5rem;
@@ -336,7 +337,7 @@ text-decoration: underline; /* Unterstrich beim Drüberfahren */
     text-align: center;
     font-size: 1.3rem;
     font-weight: bold;
-    color: var(--secondary-color);
+    color: var(--primary-color);
     margin: 0 0 0.5em 0; /* kleiner Abstand nach unten */
     padding: 0;
 }
@@ -353,6 +354,11 @@ text-decoration: underline; /* Unterstrich beim Drüberfahren */
     text-decoration: underline}
 
 
+/* Standard (Desktop): Mobile Sachen ausblenden */
+/* WICHTIG: Diese Regel muss VOR dem Media-Query stehen, damit sie mobil überschrieben werden kann */
+.mobile-only {
+    display: none !important;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -374,6 +380,17 @@ text-decoration: underline; /* Unterstrich beim Drüberfahren */
     .box-text {
         font-size: 0.9rem;
     }
+
+    /* Mobile Anpassung: Hier brauchen wir weniger Abstand als auf dem Desktop */
+    .content-box.transparent_smallheader {
+        margin-top: 10vh;    /* Titel etwas höher als Desktop */
+        margin-bottom: 20vh; /* Flexibler Abstand, aber kompakt genug für Handy */
+    }
+        .content-box.smallheader {
+        margin-top: 10vh;    /* Titel etwas höher als Desktop */
+        margin-bottom: 20vh; /* Flexibler Abstand, aber kompakt genug für Handy */
+    }
+
     .footer {
         font-size: 0.4rem;
         padding: 10px;
@@ -457,14 +474,38 @@ text-decoration: underline; /* Unterstrich beim Drüberfahren */
     }
 }
 
+    /* header und content breit auf Mobilgeräten */
+    .content-wrapper {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .content-box {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        border-radius: 0;
+        padding: 2rem 1rem;
+    }
+
 /* beim Hovern über Link erscheint eine Hand */
 a, button, [onclick] {
     cursor: pointer;
 }
 
-/* --- Stile für Scrollytelling --- */
+/* --- Stile für Scrollytelling   --       --            --        --       --         --- */
 #scrolly-presidents {
     position: relative;
+}
+
+/* Scrolly Population: Fixes für die Achsen-Animation */
+#scrolly-population .y-axis .domain {
+    display: none; /* Die vertikale Achsenlinie dauerhaft ausblenden */
+}
+
+#scrolly-population .y-axis .tick line {
+    stroke-opacity: 0.1;   /* Gitterlinien immer zart */
+    stroke-dasharray: 2,2; /* Gitterlinien immer gestrichelt */
 }
 
 .scrolly-vis {
@@ -517,7 +558,7 @@ a, button, [onclick] {
 }
 
 
-/* Anpassungen für kleinere Bildschirme */
+/* Scrolly-Anpassungen für kleinere Bildschirme */
 @media (max-width: 768px) {
     #scrolly-presidents {
         display: block; /* Untereinander statt nebeneinander */
@@ -536,6 +577,7 @@ a, button, [onclick] {
     .scrolly-text {
         width: 100%;
         margin: 0 auto;
+        margin-top: 75vh; /* Text startet viel weiter unten, damit die Grafik erst mal alleine wirkt */
     }
 
     .step {
@@ -546,7 +588,8 @@ a, button, [onclick] {
         border-radius: 0px;    /* Keine abgerundeten Ecken bei voller Breite */
     }
 
-    /* Spezifische Anpassungen für Seiten mit Scrolly-Grafiken auf Mobilgeräten */
+    /* Spezifische Anpassungen für Seiten mit Scrolly-Grafiken auf Mobilgeräten
+    im Zweifel wieder freigeben, wenn doch nur bei den Scrolly-Seiten nötig 
     .page-with-scrolly .content-wrapper {
         padding-left: 0;
         padding-right: 0;
@@ -558,12 +601,19 @@ a, button, [onclick] {
         margin-right: 0;
         border-radius: 0;
         padding: 2rem 1rem;
-    }
+    }*/
+
     .page-with-scrolly .article-body-content {
         margin-top: 1rem; /* Abstand nach oben verringern */
     }
     .page-with-scrolly .step {
         padding: 1rem 0.5rem; /* Minimales Padding, damit Grafiken/Text maximal breit sind */
+    }
+
+    /* Mehr Abstand für die Scrolly-Sektionen zum restlichen Text */
+    #scrolly-presidents, #scrolly-population, #scrolly-congress {
+        margin-top: 4rem;
+        margin-bottom: 4rem;
     }
 
     /* NEU: Grafik-Container auf volle Breite zwingen, damit die SVG den Platz nutzt */
@@ -574,4 +624,8 @@ a, button, [onclick] {
         padding-left: 1rem; /* Etwas seitlicher Abstand, damit es nicht am Rand klebt */
         padding-right: 1rem;
     }
+
+    /* Hilfsklassen für unterschiedliche Inhalte je nach Gerät */
+    .desktop-only { display: none !important; }
+    .mobile-only { display: flex !important; } /* Steps sind Flex-Container */
 }

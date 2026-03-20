@@ -119,6 +119,7 @@
             // Zeichne die Achsen
             svg.append('g')
                 .attr('transform', `translate(0,${height})`)
+                .style("font-size", isMobile ? "12px" : "10px") // NEU: Größere Schrift
                 .call(d3.axisBottom(x).ticks(d3.timeYear.every(20)).tickSizeOuter(0));
 
             
@@ -130,7 +131,7 @@
             .attr("dy", "0.32em") // Kleine vertikale Korrektur für perfekte Ausrichtung
             .attr("text-anchor", "start") // Text beginnt an x=0
             .attr("dx", "0.5em") // Etwas nach rechts verschieben (innerhalb des Diagramms)
-            .style("font-family", "Arial").style("font-size", "14px")
+            .style("font-family", "Arial").style("font-size", isMobile ? "18px" : "16px") // Nochmal größer
             .style("fill", "#777") //  Farbton
             .style("font-weight", "200") 
             .text("positiv");
@@ -139,7 +140,7 @@
             .attr("x", 0).attr("y", y(-0.9)).attr("dy", "0.32em") // x=0, y(-0.9)
             .attr("text-anchor", "start") // Text beginnt an x=0
             .attr("dx", "0.5em") // Etwas nach rechts verschieben (innerhalb des Diagramms)
-            .style("font-family", "Arial").style("font-size", "14px")
+            .style("font-family", "Arial").style("font-size", isMobile ? "18px" : "16px") // Nochmal größer
             .style("fill", "#777") //  Farbton
             .style("font-weight", "200") 
             .text("negativ");
@@ -199,10 +200,15 @@
 
             // Aufführung SCHRITT 4: das Drehbuch (SCROLLAMA LOGIK) ---
             // Diese Funktion wird aufgerufen, wenn ein neuer Step in den Fokus rückt
+            let currentStepIndex = null;
+
             function handleStepEnter(response) {
                 console.log("Kongress| Schritt 2.D: Step Enter ausgelöst für Step:", response.element.dataset.step);
                 // Welcher Step sind wir? (1, 2, 3...)
                 const stepIndex = response.element.dataset.step;
+
+                if (stepIndex === currentStepIndex) return;
+                currentStepIndex = stepIndex;
 
 
                 // Regieanweisung: Wie viel von den beiden Lines zeigen wir bei welchen Step?
@@ -277,7 +283,7 @@
             // Aufführung SCHRITT 4: Stück beginnt
             scroller.setup({
                 step: '#scrolly-congress .scrolly-text .step', // WICHTIG: Spezifischer Selektor
-                offset: isMobile ? 0.9 : 0.7, // Mobil: Trigger weit unten (0.9), Desktop: 0.7
+                offset: isMobile ? 0.9 : 0.8, // Mobil: Trigger weit unten (0.9), Desktop: 0.8
                 debug: false
             })
             .onStepEnter(handleStepEnter);
