@@ -257,7 +257,7 @@ text-decoration: underline; /* Unterstrich beim Drüberfahren */
 }
 /* Titelbox für Artikel mit transparentem Look */
 .content-box.transparent_smallheader {
-    margin-top: 8vh;    /* Desktop: Titel rutscht ins vertikale Zentrum */
+    margin-top: 10vh;    /* Desktop: Titel rutscht ins vertikale Zentrum */
     margin-bottom: 50vh; /* Desktop: Viel Platz nach unten, schiebt Text aus dem Bild */
     padding: 60px 5px;
     background: var(--smallheader-bg);
@@ -384,8 +384,8 @@ text-decoration: underline; /* Unterstrich beim Drüberfahren */
 
     /* Mobile Anpassung: Hier brauchen wir weniger Abstand als auf dem Desktop */
     .content-box.transparent_smallheader {
-        margin-top: 10vh;    /* Titel etwas höher als Desktop */
-        margin-bottom: 20vh; /* Flexibler Abstand, aber kompakt genug für Handy */
+        margin-top: 8vh;    /* Titel etwas höher als Desktop */
+        margin-bottom: 22vh; /* Flexibler Abstand, aber kompakt genug für Handy */
     }
         .content-box.smallheader {
         margin-top: 10vh;    /* Titel etwas höher als Desktop */
