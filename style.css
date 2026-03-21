@@ -258,7 +258,7 @@ text-decoration: underline; /* Unterstrich beim Drüberfahren */
 /* Titelbox für Artikel mit transparentem Look */
 .content-box.transparent_smallheader {
     margin-top: 8vh;    /* Desktop: Titel rutscht ins vertikale Zentrum */
-    margin-bottom: 44vh; /* Desktop: Viel Platz nach unten, schiebt Text aus dem Bild */
+    margin-bottom: 50vh; /* Desktop: Viel Platz nach unten, schiebt Text aus dem Bild */
     padding: 60px 5px;
     background: var(--smallheader-bg);
 }
@@ -266,7 +266,7 @@ text-decoration: underline; /* Unterstrich beim Drüberfahren */
     text-align: center;
     font-size: 2rem;
     font-weight: bolder;
-    line-height: 30px;
+    line-height: 40px;
     color: var(--main-white);
     margin: 0;
     padding: 10px 0 40px 0;
