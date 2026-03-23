@@ -330,7 +330,7 @@
 
             // Richte Scrollama ein
             scroller.setup({
-                step: '.scrolly-text .step', // Welche Elemente sollen beobachtet werden?
+                step: '#scrolly-presidents .scrolly-text .step', // Welche Elemente sollen beobachtet werden?
                 offset: isMobile ? 0.9 : 0.5, // Mobil: Trigger weit unten (0.9), Desktop: Mitte (0.5)
                 debug: false // auf true setzen, um Hilfslinien zu sehen
             })

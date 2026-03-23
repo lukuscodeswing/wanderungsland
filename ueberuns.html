@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="style.css">
     
     <style>
+    /* WICHTIG: Damit der Hintergrund über die ganze scrollbare Seite geht */
+    body {
+        position: relative;
+        min-height: 100vh;
+    }
+
     .author-box {
     text-align: left; /* Text linksbündig */
     max-width: 800px;
@@ -26,19 +32,19 @@
 
     <!-- Videologik & Fallback -->
     <div class="video-background" 
-         data-video-desktop="background_desktop.mp4"
-         data-video-mobile="background_mobile.mp4"
-         data-fallback-desktop="fallback_desktop.jpg"
-         data-fallback-mobile="fallback_mobile.jpg">
+         style="position: absolute;"
+         data-video-desktop="background_lokus03_desktop.mp4"
+         data-video-mobile="background_lokus03_mobile.mp4"
+         data-fallback-desktop="fallback_ueberuns.jpg"
+         data-fallback-mobile="fallback_ueberuns_mobile.jpg">
         <!-- Fallback-Bild, wird von JS befüllt -->
-        <img id="fallback-image" src="" alt="Hintergrundbild mit einwandernden Menschen um 1900" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+        <img id="fallback-image" src="" alt="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center;">
         <!-- Video-Element, wird von JS befüllt -->
         <video id="bg-video" class="bg-video" muted loop playsinline preload="auto">
             <source id="video-source" src="" type="video/mp4">
         </video>
     </div>
-        <!-- Play/Pause Button -->
-    <button id="video-toggle" class="video-toggle">❚❚</button>
+
 
     <div class="header header-with-buttons">
         <a href="index.html" class="back-button">←</a>
@@ -46,12 +52,12 @@
 
     <main class="content-wrapper">
     <!-- Titel-Box -->
-    <div class="content-box smallheader author-box" style="margin-bottom: 30vh">
+    <div class="content-box smallheader author-box" style="margin-bottom: 50vh">
         <h1 class="main-title">Die Autoren</h1>
     </div> 
 
 
-    <div class="content-box smallheader author-box"> 
+    <div class="content-box smallheader author-box" style="margin-bottom: 5vh"> 
         <p><b>Lukas Wessling</b> hat Sozialwissenschaften in Berlin studiert, mit anschließendem Master in Techniksoziologie. Nach einem Jahr im Datenteam bei ntv.de begann er dort ein Volontariat. Im Rahmen dieser Ausbildung verbrachte er im Sommer 2025 zwei Monate in New York.</p>
         <br>
         <p><b>Lia Nowak</b> hat Rechtswissenschaften in Berlin studiert, anschließend absolvierte auch sie ein Volontariat bei ntv.de. In ihrem letzten Ausbildungsjahr reiste sie zweimal nach New York – zunächst während der US-Präsidentschaftswahl 2024, später im Sommer 2025 für weitere Recherchen.</p>
