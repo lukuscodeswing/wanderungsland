@@ -288,6 +288,21 @@
             })
             .onStepEnter(handleStepEnter);
 
+            // Füge nach jedem einzelnen Textabschnitt ("step") ein Puffer-Element ein.
+            // Dieses leere div erzeugt einen leeren Raum, der dem Leser eine Pause gibt
+            // und sicherstellt, dass jeder Textabschnitt vollständig aus dem Bild scrollen kann.
+            steps.each(function() {
+                // `this` ist das aktuelle DOM-Element des ".step"
+                const step = d3.select(this);
+                let extraClasses = '';
+                if (step.classed('desktop-only')) extraClasses += ' desktop-only';
+                if (step.classed('mobile-only')) extraClasses += ' mobile-only';
+
+                // Wir fügen ein neues <div> direkt nach dem aktuellen Step-Element ein.
+                // WICHTIG: Wir geben ihm dieselben Sichtbarkeits-Klassen wie dem Step selbst!
+                this.insertAdjacentHTML('afterend', `<div class="step-puffer${extraClasses}" style="height: 75vh;"></div>`);
+            });
+
         }).catch(function (error) {
             console.error("Fehler beim Laden der Kongressdaten:", error);
         });
